@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>👥 智能体创作助手 - AI导演工作室</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="agents.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="../index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+                <span class="logo">👥</span>
+                <h1>智能体创作助手</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#director" class="active">AI导演</a></li>
+                <li><a href="#visual">视觉风格</a></li>
+                <li><a href="#dreamai">即梦AI专家</a></li>
+                <li><a href="#narrative">总编剧</a></li>
+                <li><a href="#storyboard">分镜导演</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 智能体中心 -->
+    <section class="agents-center">
+        <div class="container">
+            <div class="center-header">
+                <h2>👥 您的专业创作助手团队</h2>
+                <p class="subtitle">每个智能体都是特定领域的专家，为您提供专业的创作建议和指导</p>
+                
+                <div class="quick-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">🎬</div>
+                        <div class="stat-info">
+                            <div class="stat-value">5</div>
+                            <div class="stat-label">专业智能体</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💬</div>
+                        <div class="stat-info">
+                            <div class="stat-value">24/7</div>
+                            <div class="stat-label">实时对话</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🎯</div>
+                        <div class="stat-info">
+                            <div class="stat-value">100%</div>
+                            <div class="stat-label">专属服务</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 智能体网格 -->
+            <div class="agents-grid" id="agentsGrid">
+                <!-- AI导演 -->
+                <div class="agent-card" id="director">
+                    <div class="agent-header" style="background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);">
+                        <div class="agent-avatar">🎬</div>
+                        <div class="agent-info">
+                            <h3>AI导演</h3>
+                            <span class="agent-role">总指挥 · 创作规划</span>
+                            <div class="agent-status active">
+                                <span class="status-dot"></span>
+                                <span>在线</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="agent-body">
+                        <p class="agent-description">
+                            负责整体创作规划、项目协调和质量控制。像真正的导演一样指导您的创作全过程。
+                        </p>
+                        <div class="agent-expertise">
+                            <span class="expertise-tag">创作规划</span>
+                            <span class="expertise-tag">项目协调</span>
+                            <span class="expertise-tag">质量控制</span>
+                        </div>
+                        <div class="agent-dialog-preview">
+                            <div class="dialog-bubble agent">
+                                <span class="dialog-avatar">🎬</span>
+                                <div class="dialog-content">
+                                    "这个场景需要更强烈的情感表达，建议调整角色互动..."
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="agent-footer">
+                        <a href="director/" class="btn btn-primary">
+                            <i class="fas fa-comments"></i> 开始对话
+                        </a>
+                        <button class="btn btn-secondary quick-ask" data-agent="director">
+                            <i class="fas fa-bolt"></i> 快速提问
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 视觉风格智能体 -->
+                <div class="agent-card" id="visual">
+                    <div class="agent-header" style="background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);">
+                        <div class="agent-avatar">🎨</div>
+                        <div class="agent-info">
+                            <h3>视觉风格智能体</h3>
+                            <span class="agent-role">视觉研究员 · 美学指导</span>
+                            <div class="agent-status active">
+                                <span class="status-dot"></span>
+                                <span>在线</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="agent-body">
+                        <p class="agent-description">
+                            专注于视觉风格分析、色彩搭配和构图指导，为您的作品提供专业的美学建议。
+                        </p>
+                        <div class="agent-expertise">
+                            <span class="expertise-tag">色彩分析</span>
+                            <span class="expertise-tag">构图指导</span>
+                            <span class="expertise-tag">风格参考</span>
+                        </div>
+                        <div class="agent-dialog-preview">
+                            <div class="dialog-bubble agent">
+                                <span class="dialog-avatar">🎨</span>
+                                <div class="dialog-content">
+                                    "这个色调搭配很和谐，但可以尝试增加一些对比度..."
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="agent-footer">
+                        <a href="visual/" class="btn btn-primary">
+                            <i class="fas fa-comments"></i> 开始对话
+                        </a>
+                        <button class="btn btn-secondary quick-ask" data-agent="visual">
+                            <i class="fas fa-bolt"></i> 快速提问
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 即梦AI专家 -->
+                <div class="agent-card" id="dreamai">
+                    <div class="agent-header" style="background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);">
+                        <div class="agent-avatar">🤖</div>
+                        <div class="agent-info">
+                            <h3>即梦AI专家</h3>
+                            <span class="agent-role">技术专家 · 参数优化</span>
+                            <div class="agent-status active">
+                                <span class="status-dot"></span>
+                                <span>在线</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="agent-body">
+                        <p class="agent-description">
+                            精通即梦AI工具套件，擅长提示词优化、参数调整和生成效果控制。
+                        </p>
+                        <div class="agent-expertise">
+                            <span class="expertise-tag">提示词优化</span>
+                            <span class="expertise-tag">参数调整</span>
+                            <span class="expertise-tag">效果控制</span>
+                        </div>
+                        <div class="agent-dialog-preview">
+                            <div class="dialog-bubble agent">
+                                <span class="dialog-avatar">🤖</span>
+                                <div class="dialog-content">
+                                    "这个提示词可以优化为：' cinematic shot, dramatic lighting...'"
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="agent-footer">
+                        <a href="dreamai/" class="btn btn-primary">
+                            <i class="fas fa-comments"></i> 开始对话
+                        </a>
+                        <button class="btn btn-secondary quick-ask" data-agent="dreamai">
+                            <i class="fas fa-bolt"></i> 快速提问
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 总编剧智能体 -->
+                <div class="agent-card" id="narrative">
+                    <div class="agent-header" style="background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);">
+                        <div class="agent-avatar">🎭</div>
+                        <div class="agent-info">
+                            <h3>总编剧智能体</h3>
+                            <span class="agent-role">故事架构师 · 角色塑造</span>
+                            <div class="agent-status">
+                                <span class="status-dot"></span>
+                                <span>待激活</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="agent-body">
+                        <p class="agent-description">
+                            专注于故事结构、角色塑造和情节发展，帮助您构建引人入胜的叙事。
+                        </p>
+                        <div class="agent-expertise">
+                            <span class="expertise-tag">故事结构</span>
+                            <span class="expertise-tag">角色塑造</span>
+                            <span class="expertise-tag">情节设计</span>
+                        </div>
+                        <div class="agent-dialog-preview">
+                            <div class="dialog-bubble agent">
+                                <span class="dialog-avatar">🎭</span>
+                                <div class="dialog-content">
+                                    "这个角色的动机不够明确，建议增加一些背景故事..."
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="agent-footer">
+                        <a href="narrative/" class="btn btn-primary">
+                            <i class="fas fa-comments"></i> 开始对话
+                        </a>
+                        <button class="btn btn-secondary quick-ask" data-agent="narrative">
+                            <i class="fas fa-bolt"></i> 快速提问
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 分镜智能体 -->
+                <div class="agent-card" id="storyboard">
+                    <div class="agent-header" style="background: linear-gradient(135deg, #e11d48 0%, #fb7185 100%);">
+                        <div class="agent-avatar">🎞️</div>
+                        <div class="agent-info">
+                            <h3>分镜智能体</h3>
+                            <span class="agent-role">视觉叙事 · 镜头语言</span>
+                            <div class="agent-status">
+                                <span class="status-dot"></span>
+                                <span>待激活</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="agent-body">
+                        <p class="agent-description">
+                            擅长视觉叙事、镜头语言和节奏控制，将故事转化为生动的视觉画面。
+                        </p>
+                        <div class="agent-expertise">
+                            <span class="expertise-tag">镜头语言</span>
+                            <span class="expertise-tag">视觉叙事</span>
+                            <span class="expertise-tag">节奏控制</span>
+                        </div>
+                        <div class="agent-dialog-preview">
+                            <div class="dialog-bubble agent">
+                                <span class="dialog-avatar">🎞️</span>
+                                <div class="dialog-content">
+                                    "这个转场可以用匹配剪辑，让场景过渡更自然..."
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="agent-footer">
+                        <a href="storyboard/" class="btn btn-primary">
+                            <i class="fas fa-comments"></i> 开始对话
+                        </a>
+                        <button class="btn btn-secondary quick-ask" data-agent="storyboard">
+                            <i class="fas fa-bolt"></i> 快速提问
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 协作模式 -->
+            <div class="collaboration-section">
+                <h3>🤝 智能体协作模式</h3>
+                <p class="section-subtitle">多个智能体共同为您提供综合创作建议</p>
+                
+                <div class="collaboration-options">
+                    <div class="collab-option">
+                        <div class="collab-icon">🎬+🎨</div>
+                        <h4>导演+视觉协作</h4>
+                        <p>整体规划与视觉风格的完美结合</p>
+                        <button class="btn btn-sm" data-collab="director-visual">
+                            <i class="fas fa-users"></i> 启动协作
+                        </button>
+                    </div>
+                    
+                    <div class="collab-option">
+                        <div class="collab-icon">🎭+🎞️</div>
+                        <h4>编剧+分镜协作</h4>
+                        <p>故事叙事与视觉呈现的深度整合</p>
+                        <button class="btn btn-sm" data-collab="narrative-storyboard">
+                            <i class="fas fa-users"></i> 启动协作
+                        </button>
+                    </div>
+                    
+                    <div class="collab-option">
+                        <div class="collab-icon">🤖+🎨</div>
+                        <h4>AI专家+视觉协作</h4>
+                        <p>技术实现与美学追求的最佳平衡</p>
+                        <button class="btn btn-sm" data-collab="dreamai-visual">
+                            <i class="fas fa-users"></i> 启动协作
+                        </button>
+                    </div>
+                    
+                    <div class="collab-option">
+                        <div class="collab-icon">👥</div>
+                        <h4>全体智能体会议</h4>
+                        <p>所有智能体共同讨论复杂创作问题</p>
+                        <button class="btn btn-sm" data-collab="all">
+                            <i class="fas fa-users"></i> 启动会议
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 快速提问模态框 -->
+    <div class="modal" id="quickAskModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>💬 快速提问</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="agent-selection">
+                    <div class="selected-agent">
+                        <span class="agent-avatar" id="selectedAvatar">🎬</span>
+                        <span id="selectedAgentName">AI导演</span>
+                    </div>
+                </div>
+                <textarea id="quickQuestion" placeholder="请输入您的问题...例如：这个场景的色彩搭配如何优化？"></textarea>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" id="sendQuickQuestion">
+                        <i class="fas fa-paper-plane"></i> 发送问题
+                    </button>
+                    <button class="btn btn-secondary modal-close">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo">👥</span>
+                    <h3>智能体创作助手</h3>
+                    <p>Nmyh NIUMA的专属创作指导团队</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>智能体</h4>
+                        <a href="#director">AI导演</a>
+                        <a href="#visual">视觉风格</a>
+                        <a href="#dreamai">即梦AI专家</a>
+                    </div>
+                    
+                    <div class="link-group">
+                        <h4>功能</h4>
+                        <a href="#">对话系统</a>
+                        <a href="#">编辑工具</a>
+                        <a href="#">协作模式</a>
+                    </div>
+                    
+                    <div class="link-group">
+                        <h4>支持</h4>
+                        <a href="../index.html">返回主站</a>
+                        <a href="#">使用指南</a>
+                        <a href="#">反馈建议</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 AI导演工作室 · 智能体创作助手系统</p>
+                <p>专属服务 · 专业指导 · 实时对话</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="agents.js"></script>
+</body>
+</html>

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 AI导演 - 智能体创作助手</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../agents.css">
+    <link rel="stylesheet" href="director.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/dracula.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="../index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+                <span class="logo">🎬</span>
+                <h1>AI导演 · 创作总指挥</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#chat" class="active">对话</a></li>
+                <li><a href="#planning">创作规划</a></li>
+                <li><a href="#coordination">项目协调</a></li>
+                <li><a href="#quality">质量控制</a></li>
+                <li><a href="#tools">导演工具</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 主工作区 -->
+    <div class="agent-workspace">
+        <div class="container">
+            <!-- 智能体信息栏 -->
+            <div class="agent-info-bar">
+                <div class="agent-profile">
+                    <div class="agent-avatar-large">🎬</div>
+                    <div class="agent-details">
+                        <h2>AI导演</h2>
+                        <p class="agent-title">创作总指挥 · 项目协调专家</p>
+                        <div class="agent-stats">
+                            <span class="stat"><i class="fas fa-clock"></i> 在线时间: 24/7</span>
+                            <span class="stat"><i class="fas fa-tasks"></i> 协助项目: 12</span>
+                            <span class="stat"><i class="fas fa-star"></i> 满意度: 98%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="agent-quick-actions">
+                    <button class="btn btn-sm" id="newProject">
+                        <i class="fas fa-plus"></i> 新建项目
+                    </button>
+                    <button class="btn btn-sm" id="scheduleMeeting">
+                        <i class="fas fa-calendar"></i> 安排会议
+                    </button>
+                    <button class="btn btn-sm" id="exportPlan">
+                        <i class="fas fa-download"></i> 导出计划
+                    </button>
+                </div>
+            </div>
+
+            <div class="workspace-grid">
+                <!-- 左侧：对话区域 -->
+                <div class="workspace-left" id="chat">
+                    <div class="chat-container">
+                        <div class="chat-header">
+                            <h3><i class="fas fa-comments"></i> 与AI导演对话</h3>
+                            <div class="chat-actions">
+                                <button class="btn btn-sm" id="clearChat">
+                                    <i class="fas fa-trash"></i> 清空
+                                </button>
+                                <button class="btn btn-sm" id="saveChat">
+                                    <i class="fas fa-save"></i> 保存
+                                </button>
+                                <button class="btn btn-sm" id="exportChat">
+                                    <i class="fas fa-file-export"></i> 导出
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="chat-messages" id="chatMessages">
+                            <!-- 欢迎消息 -->
+                            <div class="message agent">
+                                <div class="message-avatar">🎬</div>
+                                <div class="message-content">
+                                    <div class="message-header">
+                                        <span class="message-sender">AI导演</span>
+                                        <span class="message-time">刚刚</span>
+                                    </div>
+                                    <div class="message-text">
+                                        欢迎回来，Nmyh NIUMA！我是您的AI导演，负责整体创作规划和项目协调。今天有什么创作计划需要我协助吗？
+                                    </div>
+                                    <div class="message-actions">
+                                        <button class="action-btn" data-action="suggest-plan">
+                                            <i class="fas fa-lightbulb"></i> 建议创作计划
+                                        </button>
+                                        <button class="action-btn" data-action="review-project">
+                                            <i class="fas fa-search"></i> 评审现有项目
+                                        </button>
+                                        <button class="action-btn" data-action="coordinate-team">
+                                            <i class="fas fa-users"></i> 协调智能体团队
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 示例对话 -->
+                            <div class="message user">
+                                <div class="message-avatar">👤</div>
+                                <div class="message-content">
+                                    <div class="message-header">
+                                        <span class="message-sender">您</span>
+                                        <span class="message-time">2分钟前</span>
+                                    </div>
+                                    <div class="message-text">
+                                        我想开始一个新的漫剧项目，主题是"梦境侦探"，你有什么建议？
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="message agent">
+                                <div class="message-avatar">🎬</div>
+                                <div class="message-content">
+                                    <div class="message-header">
+                                        <span class="message-sender">AI导演</span>
+                                        <span class="message-time">1分钟前</span>
+                                    </div>
+                                    <div class="message-text">
+                                        很好的创意！"梦境侦探"这个主题很有潜力。我建议：
+                                        <br><br>
+                                        1. <strong>项目阶段规划</strong>：
+                                        - 第一阶段：概念开发（1周）
+                                        - 第二阶段：角色设计（2周）
+                                        - 第三阶段：故事创作（3周）
+                                        - 第四阶段：视觉制作（4周）
+                                        <br><br>
+                                        2. <strong>资源协调</strong>：
+                                        - 让视觉风格智能体设计角色视觉
+                                        - 请总编剧智能体协助故事架构
+                                        - 由分镜智能体规划镜头语言
+                                        <br><br>
+                                        3. <strong>质量控制点</strong>：
+                                        - 每周进度评审
+                                        - 关键节点质量检查
+                                        - 用户测试反馈收集
+                                    </div>
+                                    <div class="message-actions">
+                                        <button class="action-btn" data-action="create-timeline">
+                                            <i class="fas fa-calendar-alt"></i> 创建详细时间线
+                                        </button>
+                                        <button class="action-btn" data-action="assign-tasks">
+                                            <i class="fas fa-tasks"></i> 分配智能体任务
+                                        </button>
+                                        <button class="action-btn" data-action="set-milestones">
+                                            <i class="fas fa-flag"></i> 设置里程碑
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="chat-input">
+                            <div class="input-tools">
+                                <button class="tool-btn" title="添加附件">
+                                    <i class="fas fa-paperclip"></i>
+                                </button>
+                                <button class="tool-btn" title="插入项目链接">
+                                    <i class="fas fa-link"></i>
+                                </button>
+                                <button class="tool-btn" title="格式化文本">
+                                    <i class="fas fa-bold"></i>
+                                </button>
+                                <button class="tool-btn" title="表情符号">
+                                    <i class="fas fa-smile"></i>
+                                </button>
+                            </div>
+                            <textarea 
+                                id="messageInput" 
+                                placeholder="输入您的问题或创作需求...（按Ctrl+Enter发送）"
+                                rows="3"
+                            ></textarea>
+                            <div class="input-actions">
+                                <div class="quick-prompts">
+                                    <span class="prompt-label">快速提问：</span>
+                                    <button class="prompt-btn" data-prompt="project-plan">项目规划建议</button>
+                                    <button class="prompt-btn" data-prompt="team-coordination">团队协调指导</button>
+                                    <button class="prompt-btn" data-prompt="quality-check">质量检查要点</button>
+                                </div>
+                                <button class="btn btn-primary" id="sendMessage">
+                                    <i class="fas fa-paper-plane"></i> 发送
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 右侧：编辑工具区域 -->
+                <div class="workspace-right">
+                    <!-- 创作规划工具 -->
+                    <div class="tool-section" id="planning">
+                        <div class="tool-header">
+                            <h3><i class="fas fa-project-diagram"></i> 创作规划工具</h3>
+                            <button class="tool-toggle" data-tool="planning">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="tool-body">
+                            <div class="planning-tool">
+                                <div class="form-group">
+                                    <label for="projectName">项目名称</label>
+                                    <input type="text" id="projectName" placeholder="例如：梦境侦探漫剧" value="梦境侦探">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="projectType">项目类型</label>
+                                    <select id="projectType">
+                                        <option value="comic">漫剧</option>
+                                        <option value="animation">动画</option>
+                                        <option value="illustration">插画系列</option>
+                                        <option value="video">视频创作</option>
+                                        <option value="game">游戏设计</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="timeline">时间线（周）</label>
+                                    <input type="range" id="timeline" min="1" max="12" value="8">
+                                    <div class="range-value">
+                                        <span id="timelineValue">8</span> 周
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>项目阶段</label>
+                                    <div class="phase-list">
+                                        <div class="phase-item">
+                                            <input type="checkbox" id="phase1" checked>
+                                            <label for="phase1">概念开发</label>
+                                            <input type="number" class="phase-weeks" value="1" min="1" max="4">
+                                            <span>周</span>
+                                        </div>
+                                        <div class="phase-item">
+                                            <input type="checkbox" id="phase2" checked>
+                                            <label for="phase2">角色设计</label>
+                                            <input type="number" class="phase-weeks" value="2" min="1" max="4">
+                                            <span>周</span>
+                                        </div>
+                                        <div class="phase-item">
+                                            <input type="checkbox" id="phase3" checked>
+                                            <label for="phase3">故事创作</label>
+                                            <input type="number" class="phase-weeks" value="3" min="1" max="6">
+                                            <span>周</span>
+                                        </div>
+                                        <div class="phase-item">
+                                            <input type="checkbox" id="phase4" checked>
+                                            <label for="phase4">视觉制作</label>
+                                            <input type="number" class="phase-weeks" value="4" min="1" max="8">
+                                            <span>周</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <button class="btn btn-primary" id="generatePlan">
+                                    <i class="fas fa-magic"></i> 生成详细计划
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 项目协调工具 -->
+                    <div class="tool-section" id="coordination">
+                        <div class="tool-header">
+                            <h3><i class="fas fa-users-cog"></i> 项目协调工具</h3>
+                            <button class="tool-toggle" data-tool="coordination">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="tool-body">
+                            <div class="coordination-tool">
+                                <div class="team-assignment">
+                                    <h4>智能体任务分配</h4>
+                                    <div class="assignment-list">
+                                        <div class="assignment-item">
+                                            <span class="agent-avatar">🎨</span>
+                                            <span class="agent-name">视觉风格智能体</span>
+                                            <select class="task-select">
+                                                <option value="character-design">角色设计</option>
+                                                <option value="style-guide">风格指南</option>
+                                                <option value="color-palette">色彩方案</option>
+                                                <option value="composition">构图指导</option>
+                                            </select>
+                                            <input type="number" class="task-days" value="7" min="1" max="30">
+                                            <span>天</span>
+                                        </div>
+                                        <div class="assignment-item">
+                                            <span class="agent-avatar">🎭</span>
+                                            <span class="agent-name">总编剧智能体</span>
+                                            <select class="task-select">
+                                                <option value="story-arc">故事架构</option>
+                                                <option value="character-dev">角色开发</option>
+                                                <option value="dialogue">对话编写</option>
+                                                <option value="plot-twist">情节设计</option>
+                                            </select>
+                                            <input type="number" class="task-days" value="14" min="1" max="30">
+                                            <span>天</span>
+                                        </div>
+                                        <div class="assignment-item">
+                                            <span class="agent-avatar">🎞️</span>
+                                            <span class="agent-name">分镜智能体</span>
+                                            <select class="task-select">
+                                                <option value="storyboard">分镜设计</option>
+                                                <option value="camera-work">镜头规划</option>
+                                                <option value="rhythm">节奏控制</option>
+                                                <option value="transition">转场设计</option>
+                                            </select>
+                                            <input type="number" class="task-days" value="10" min="1" max="30">
+                                            <span>天</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="coordination-actions">
+                                    <button class="btn btn-sm" id="assignTasks">
+                                        <i class="fas fa-paper-plane"></i> 分配任务
+                                    </button>
+                                    <button class="btn btn-sm" id="scheduleReview">
+                                        <i class="fas fa-calendar-check"></i> 安排评审
+                                    </button>
+                                    <button class="btn btn-sm" id="syncProgress">
+                                        <i class="fas fa-sync"></i> 同步进度
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 质量控制工具 -->
+                    <div class="tool-section" id="quality">
+                        <div class="tool-header">
+                            <h3><i class="fas fa-clipboard-check"></i> 质量控制工具</h3>
+                            <button class="tool-toggle" data-tool="quality">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="tool-body">
+                            <div class="quality-tool">
+                                <div class="checklist">
+                                    <h4>质量检查清单</h4>
+                                    <div class="check-item">
+                                        <input type="checkbox" id="check1">
+                                        <label for="check1">概念清晰度</label>
+                                        <span class="check-status pending">待检查</span>
+                                    </div>
+                                    <div class="check-item">
+                                        <input type="checkbox" id="check2">
+                                        <label for="check2">角色一致性</label>
+                                        <span class="check-status pending">待检查</span>
+                                    </div>
+                                    <div class="check-item">
+                                        <input type="checkbox" id="check3">
+                                        <label for="check3">故事连贯性</label>
+                                        <span class="check-status pending">待检查</span>
+                                    </div>
+                                    <div class="check-item">
+                                        <input type="checkbox" id="check4">
+                                        <label for="check4">视觉质量</label>
+                                        <span class="check-status pending">待检查</span>
+                                    </div>
+                                    <div class="check-item">
+                                        <input type="checkbox" id="check5">
+                                        <label for="check5">技术实现</label>
+                                        <span class="check-status pending">待检查</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="quality-metrics">
+                                    <h4>质量指标</h4>
+                                    <div class="metric">
+                                        <span class="metric-label">完成度</span>
+                                        <div class="metric-bar">
+                                            <div class="metric-fill" style="width: 30%"></div>
+                                        </div>
+                                        <span class="metric-value">30%</span>
+                                    </div>
+                                    <div class="metric">
+                                        <span class="metric-label">一致性</span>
+                                        <div class="metric-bar">
+                                            <div class="metric-fill" style="width: 75%"></div>
+                                        </div>
+                                        <span class="metric-value">75%</
