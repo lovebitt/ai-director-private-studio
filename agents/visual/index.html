@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎨 视觉风格智能体 - AI导演工作室</title>
+    <link rel="stylesheet" href="../agents.css">
+    <link rel="stylesheet" href="visual.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="../../index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>返回工作室</span>
+                </a>
+                <div class="agent-header">
+                    <div class="agent-avatar visual-avatar">🎨</div>
+                    <div>
+                        <h1>视觉风格智能体</h1>
+                        <p class="agent-tagline">美学指导 · 色彩专家 · 构图大师</p>
+                    </div>
+                </div>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-menu">
+                <a href="../../index.html">工作室首页</a>
+                <a href="../index.html">智能体中心</a>
+                <a href="../director/index.html">AI导演</a>
+                <a href="#chat" class="active">视觉对话</a>
+                <a href="#tools">视觉工具</a>
+                <a href="#gallery">灵感图库</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容 -->
+    <main class="agent-container">
+        <!-- 欢迎区域 -->
+        <section class="welcome-section">
+            <div class="welcome-card visual-welcome">
+                <div class="welcome-content">
+                    <h2>欢迎来到视觉创作空间，Nmyh NIUMA！</h2>
+                    <p>我是您的专属视觉风格智能体，专注于美学设计、色彩搭配和构图指导。让我帮助您将创意转化为惊艳的视觉作品。</p>
+                    <div class="welcome-stats">
+                        <div class="stat">
+                            <i class="fas fa-palette"></i>
+                            <span>12+ 视觉风格</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-swatchbook"></i>
+                            <span>256+ 色彩方案</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-magic"></i>
+                            <span>AI美学分析</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="welcome-image">
+                    <div class="color-preview">
+                        <div class="color-circle" style="background-color: #FF6B6B;"></div>
+                        <div class="color-circle" style="background-color: #4ECDC4;"></div>
+                        <div class="color-circle" style="background-color: #FFD166;"></div>
+                        <div class="color-circle" style="background-color: #06D6A0;"></div>
+                        <div class="color-circle" style="background-color: #118AB2;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 两栏布局 -->
+        <div class="two-column-layout">
+            <!-- 左侧：视觉对话 -->
+            <section class="chat-section" id="chat">
+                <div class="section-header">
+                    <h3><i class="fas fa-comments"></i> 视觉风格对话</h3>
+                    <p>与我讨论您的视觉创意，获取专业的美学建议</p>
+                </div>
+                
+                <div class="chat-container">
+                    <!-- 聊天消息区域 -->
+                    <div class="chat-messages" id="chatMessages">
+                        <!-- 欢迎消息 -->
+                        <div class="message agent">
+                            <div class="message-avatar">🎨</div>
+                            <div class="message-content">
+                                <div class="message-header">
+                                    <span class="message-sender">视觉风格智能体</span>
+                                    <span class="message-time">刚刚</span>
+                                </div>
+                                <div class="message-text">
+                                    您好！我是您的视觉风格智能体，专注于美学设计和视觉表达。我可以帮助您：
+                                    <br><br>
+                                    🎨 <strong>风格分析</strong> - 分析现有作品的视觉风格
+                                    <br>
+                                    🌈 <strong>色彩指导</strong> - 推荐合适的色彩搭配方案
+                                    <br>
+                                    📐 <strong>构图建议</strong> - 提供专业的构图和布局指导
+                                    <br>
+                                    🖼️ <strong>参考推荐</strong> - 推荐相关的视觉参考案例
+                                    <br><br>
+                                    请分享您的视觉创意或上传图片让我分析！
+                                </div>
+                                <div class="message-actions">
+                                    <button class="action-btn" data-action="analyze-style">
+                                        <i class="fas fa-search"></i> 分析风格
+                                    </button>
+                                    <button class="action-btn" data-action="suggest-colors">
+                                        <i class="fas fa-palette"></i> 推荐色彩
+                                    </button>
+                                    <button class="action-btn" data-action="composition-help">
+                                        <i class="fas fa-crop"></i> 构图指导
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 快速提示 -->
+                    <div class="quick-prompts">
+                        <button class="prompt-btn" data-prompt="style-analysis">
+                            <i class="fas fa-search"></i> 帮我分析这个作品的视觉风格
+                        </button>
+                        <button class="prompt-btn" data-prompt="color-scheme">
+                            <i class="fas fa-palette"></i> 推荐适合这个主题的色彩方案
+                        </button>
+                        <button class="prompt-btn" data-prompt="composition-feedback">
+                            <i class="fas fa-eye"></i> 给我的构图提供专业建议
+                        </button>
+                    </div>
+                    
+                    <!-- 消息输入区域 -->
+                    <div class="message-input-area">
+                        <div class="input-tools">
+                            <button class="tool-btn" title="上传图片">
+                                <i class="fas fa-image"></i>
+                            </button>
+                            <button class="tool-btn" title="选择颜色">
+                                <i class="fas fa-fill-drip"></i>
+                            </button>
+                            <button class="tool-btn" title="添加参考">
+                                <i class="fas fa-link"></i>
+                            </button>
+                        </div>
+                        <textarea 
+                            id="messageInput" 
+                            placeholder="描述您的视觉需求，或上传图片让我分析..." 
+                            rows="2"></textarea>
+                        <button id="sendMessage" class="send-btn">
+                            <i class="fas fa-paper-plane"></i> 发送
+                        </button>
+                    </div>
+                    
+                    <!-- 聊天控制 -->
+                    <div class="chat-controls">
+                        <button id="clearChat" class="control-btn">
+                            <i class="fas fa-trash"></i> 清空对话
+                        </button>
+                        <button id="saveVisual" class="control-btn">
+                            <i class="fas fa-save"></i> 保存分析
+                        </button>
+                        <button id="exportAnalysis" class="control-btn">
+                            <i class="fas fa-download"></i> 导出报告
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 右侧：视觉工具 -->
+            <section class="tools-section" id="tools">
+                <div class="section-header">
+                    <h3><i class="fas fa-tools"></i> 视觉创作工具</h3>
+                    <p>专业工具助您实现完美视觉效果</p>
+                </div>
+                
+                <!-- 工具折叠区域 -->
+                <div class="tools-grid">
+                    <!-- 色彩分析工具 -->
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <h4><i class="fas fa-palette"></i> 色彩分析器</h4>
+                            <button class="tool-toggle">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="tool-body">
+                            <div class="color-input">
+                                <input type="color" id="primaryColor" value="#FF6B6B">
+                                <label for="primaryColor">主色调</label>
+                            </div>
+                            <div class="color-input">
+                                <input type="color" id="secondaryColor" value="#4ECDC4">
+                                <label for="secondaryColor">辅助色</label>
+                            </div>
+                            <div class="color-input">
+                                <input type="color" id="accentColor" value="#FFD166">
+                                <label for="accentColor">强调色</label>
+                            </div>
+                            <button id="analyzeColors" class="tool-action-btn">
+                                <i class="fas fa-magic"></i> 分析色彩搭配
+                            </button>
+                            <div class="color-palette-preview" id="colorPalette">
+                                <!-- 动态生成色彩方案 -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 风格匹配工具 -->
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <h4><i class="fas fa-search"></i> 风格匹配器</h4>
+                            <button class="tool-toggle">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="tool-body">
+                            <div class="style-select">
+                                <label for="targetStyle">目标风格：</label>
+                                <select id="targetStyle">
+                                    <option value="minimalist">极简主义</option>
+                                    <option value="vintage">复古风格</option>
+                                    <option value="cyberpunk">赛博朋克</option>
+                                    <option value="fantasy">奇幻风格</option>
+                                    <option value="realistic">写实主义</option>
+                                    <option value="anime">动漫风格</option>
+                                </select>
+                            </div>
+                            <div class="style-select">
+                                <label for="mood">情感氛围：</label>
+                                <select id="mood">
+                                    <option value="warm">温暖舒适</option>
+                                    <option value="cool">冷静专业</option>
+                                    <option value="energetic">活力四射</option>
+                                    <option value="mysterious">神秘莫测</option>
+                                    <option value="romantic">浪漫唯美</option>
+                                </select>
+                            </div>
+                            <button id="matchStyle" class="tool-action-btn">
+                                <i class="fas fa-exchange-alt"></i> 匹配视觉风格
+                            </button>
+                            <div class="style-recommendations" id="styleRecs">
+                                <!-- 动态生成风格推荐 -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 构图分析工具 -->
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <h4><i class="fas fa-crop"></i> 构图分析器</h4>
+                            <button class="tool-toggle">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="tool-body">
+                            <div class="composition-type">
+                                <label>构图类型：</label>
+                                <div class="composition-options">
+                                    <label class="composition-option">
+                                        <input type="radio" name="composition" value="rule-of-thirds" checked>
+                                        <span>三分法</span>
+                                    </label>
+                                    <label class="composition-option">
+                                        <input type="radio" name="composition" value="golden-ratio">
+                                        <span>黄金分割</span>
+                                    </label>
+                                    <label class="composition-option">
+                                        <input type="radio" name="composition" value="symmetry">
+                                        <span>对称构图</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="composition-guide">
+                                <label>视觉焦点：</label>
+                                <input type="range" id="focusPoint" min="1" max="5" value="3">
+                                <div class="focus-labels">
+                                    <span>背景</span>
+                                    <span>中景</span>
+                                    <span>前景</span>
+                                </div>
+                            </div>
+                            <button id="analyzeComposition" class="tool-action-btn">
+                                <i class="fas fa-eye"></i> 分析构图效果
+                            </button>
+                            <div class="composition-feedback" id="compositionFeedback">
+                                <!-- 动态生成构图反馈 -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 参考图库工具 -->
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <h4><i class="fas fa-images"></i> 灵感图库</h4>
+                            <button class="tool-toggle">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="tool-body">
+                            <div class="gallery-search">
+                                <input type="text" id="gallerySearch" placeholder="搜索视觉参考...">
+                                <button id="searchGallery">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                            <div class="gallery-categories">
+                                <button class="category-btn active" data-category="all">全部</button>
+                                <button class="category-btn" data-category="color">色彩</button>
+                                <button class="category-btn" data-category="composition">构图</button>
+                                <button class="category-btn" data-category="lighting">光影</button>
+                                <button class="category-btn" data-category="texture">质感</button>
+                            </div>
+                            <div class="gallery-grid" id="galleryGrid">
+                                <!-- 动态生成图库预览 -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- 灵感图库 -->
+        <section class="gallery-section" id="gallery">
+            <div class="section-header">
+                <h3><i class="fas fa-star"></i> 精选视觉灵感</h3>
+                <p>专业精选的视觉参考，激发您的创作灵感</p>
+            </div>
+            
+            <div class="inspiration-grid">
+                <div class="inspiration-card">
+                    <div class="inspiration-preview" style="background: linear-gradient(135deg, #FF6B6B, #FFD166);"></div>
+                    <div class="inspiration-info">
+                        <h5>温暖活力配色</h5>
+                        <p>适合：品牌设计、插画、UI界面</p>
+                        <div class="inspiration-colors">
+                            <span style="background-color: #FF6B6B;"></span>
+                            <span style="background-color: #FFD166;"></span>
+                            <span style="background-color: #06D6A0;"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="inspiration-card">
+                    <div class="inspiration-preview" style="background: linear-gradient(135deg, #118AB2, #4ECDC4);"></div>
+                    <div class="inspiration-info">
+                        <h5>冷静专业配色</h5>
+                        <p>适合：科技产品、企业网站、数据可视化</p>
+                        <div class="inspiration-colors">
+                            <span style="background-color: #118AB2;"></span>
+                            <span style="background-color: #4ECDC4;"></span>
+                            <span style="background-color: #073B4C;"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="inspiration-card">
+                    <div class="inspiration-preview" style="background: linear-gradient(135deg, #EF476F, #FFD166);"></div>
+                    <div class="inspiration-info">
+                        <h5>时尚对比配色</h5>
+                        <p>适合：时尚设计、海报、社交媒体</p>
+                        <div class="inspiration-colors">
+                            <span style="background-color: #EF476F;"></span>
+                            <span style="background-color: #FFD166;"></span>
+                            <span style="background-color: #06D6A0;"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="inspiration-card">
+                    <div class="inspiration-preview" style="background: linear-gradient(135deg, #7209B7, #3A0CA3);"></div>
+                    <div class="inspiration-info">
+                        <h5>神秘深邃配色</h5>
+                        <p>适合：游戏设计、奇幻插画、夜间主题</p>
+                        <div class="inspiration-colors">
+                            <span style="background-color: #7209B7;"></span>
+                            <span style="background-color: #3A0CA3;"></span>
+                            <span style="background-color: #4361EE;"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 快速动作栏 -->
+    <div class="quick-actions-bar">
+        <button id="newVisualProject" class="quick-action">
+            <i class="fas fa-plus"></i>
+            <span>新建视觉项目</span>
+        </button>
+        <button id="analyzeImage" class="quick-action">
+            <i class="fas fa-camera"></i>
+            <span>分析图片</span>
+        </button>
+        <button id="generatePalette" class="quick-action">
+            <i class="fas fa-swatchbook"></i>
+            <span>
