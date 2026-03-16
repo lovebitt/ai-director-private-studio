@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI导演工作室 - 基于导演思维OS 4.3的AI增强创作平台">
+    <meta name="keywords" content="AI导演,即梦AI,漫剧创作,多智能体系统,导演思维OS">
+    <title>🎬 AI导演工作室</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="logo">🎬</span>
+                <h1>AI导演工作室</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="active">首页</a></li>
+                <li><a href="#features">系统功能</a></li>
+                <li><a href="#works">作品展示</a></li>
+                <li><a href="#agents">智能体团队</a></li>
+                <li><a href="#tools">创作工具</a></li>
+                <li><a href="#about">关于我们</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 首页英雄区域 -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="private-badge">
+                    <span class="badge-icon">🔒</span>
+                    <span class="badge-text">私人系统 · 专属服务</span>
+                </div>
+                <h2 class="hero-title">欢迎回来，<span class="highlight">Nmyh NIUMA</span></h2>
+                <p class="hero-subtitle">您的私人AI导演工作室 · 导演思维OS 4.3</p>
+                <p class="hero-description">
+                    这是为您一人服务的专属创作平台，整合了多智能体协作系统、
+                    即梦AI创作工具和导演思维方法论，提供从创意到成品的完整私人创作解决方案。
+                </p>
+                <div class="system-status">
+                    <div class="status-item">
+                        <span class="status-icon">👤</span>
+                        <span class="status-text">专属用户: Nmyh NIUMA</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-icon">🔐</span>
+                        <span class="status-text">访问权限: 私人专属</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-icon">🎯</span>
+                        <span class="status-text">服务模式: 24/7专属服务</span>
+                    </div>
+                </div>
+                <div class="hero-actions">
+                    <a href="#tools" class="btn btn-primary">开始私人创作</a>
+                    <a href="#works" class="btn btn-secondary">查看您的作品</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="visual-card">
+                    <div class="card-header">
+                        <span class="card-icon">🤖</span>
+                        <h3>多智能体系统运行中</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="agent-status">
+                            <div class="agent-item active">
+                                <span class="agent-icon">🎬</span>
+                                <span>AI导演</span>
+                                <span class="status-dot active"></span>
+                            </div>
+                            <div class="agent-item active">
+                                <span class="agent-icon">🎨</span>
+                                <span>视觉风格</span>
+                                <span class="status-dot active"></span>
+                            </div>
+                            <div class="agent-item active">
+                                <span class="agent-icon">🤖</span>
+                                <span>即梦AI专家</span>
+                                <span class="status-dot active"></span>
+                            </div>
+                            <div class="agent-item">
+                                <span class="agent-icon">🎭</span>
+                                <span>总编剧</span>
+                                <span class="status-dot"></span>
+                            </div>
+                            <div class="agent-item">
+                                <span class="agent-icon">🎞️</span>
+                                <span>分镜导演</span>
+                                <span class="status-dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 系统功能 -->
+    <section id="features" class="section features">
+        <div class="container">
+            <h2 class="section-title">🎯 核心功能</h2>
+            <p class="section-subtitle">导演思维OS 4.3驱动的AI创作系统</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎬</div>
+                    <h3>导演思维指导</h3>
+                    <p>基于导演思维OS 4.3的系统化创作方法论，从概念到成品的完整指导。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>多智能体协作</h3>
+                    <p>5个专业智能体协同工作，覆盖视觉、叙事、技术等所有创作环节。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>即梦AI集成</h3>
+                    <p>深度集成字节跳动即梦AI工具套件，支持图片生成、视频制作、漫剧创作。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>记忆连续性</h3>
+                    <p>智能记忆系统确保创作连续性和知识积累，支持长期项目开发。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 作品展示 -->
+    <section id="works" class="section works">
+        <div class="container">
+            <h2 class="section-title">🎨 作品展示</h2>
+            <p class="section-subtitle">AI导演创作的精彩作品</p>
+            
+            <div class="works-grid">
+                <div class="work-card">
+                    <div class="work-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <span class="work-type">漫剧</span>
+                    </div>
+                    <div class="work-content">
+                        <h3>梦境侦探</h3>
+                        <p>AI导演首部漫剧作品，讲述梦境侦探林梦的超现实冒险故事。</p>
+                        <div class="work-tags">
+                            <span class="tag">悬疑</span>
+                            <span class="tag">AI生成</span>
+                            <span class="tag">漫剧</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="work-card">
+                    <div class="work-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <span class="work-type">插画</span>
+                    </div>
+                    <div class="work-content">
+                        <h3>城市漫游者系列</h3>
+                        <p>粗粝细腻主义风格的城市插画系列，探索现代都市的情感表达。</p>
+                        <div class="work-tags">
+                            <span class="tag">城市</span>
+                            <span class="tag">情感</span>
+                            <span class="tag">插画</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="work-card">
+                    <div class="work-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <span class="work-type">视频</span>
+                    </div>
+                    <div class="work-content">
+                        <h3>AI创作之旅</h3>
+                        <p>记录AI导演系统开发过程的纪录片，展示技术背后的创作哲学。</p>
+                        <div class="work-tags">
+                            <span class="tag">纪录片</span>
+                            <span class="tag">技术</span>
+                            <span class="tag">创作</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 智能体团队 -->
+    <section id="agents" class="section agents">
+        <div class="container">
+            <h2 class="section-title">👥 智能体团队</h2>
+            <p class="section-subtitle">专业分工，协同创作</p>
+            
+            <div class="agents-grid">
+                <div class="agent-card">
+                    <div class="agent-header">
+                        <span class="agent-avatar">🎬</span>
+                        <div class="agent-info">
+                            <h3>AI导演</h3>
+                            <span class="agent-role">总指挥</span>
+                        </div>
+                    </div>
+                    <p>负责整体协调、任务分配、进度监控和质量控制，确保创作流程顺畅。</p>
+                    <div class="agent-stats">
+                        <div class="stat">
+                            <span class="stat-value">100%</span>
+                            <span class="stat-label">在线率</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">28</span>
+                            <span class="stat-label">任务完成</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="agent-card">
+                    <div class="agent-header">
+                        <span class="agent-avatar">🎨</span>
+                        <div class="agent-info">
+                            <h3>视觉风格智能体</h3>
+                            <span class="agent-role">视觉研究员</span>
+                        </div>
+                    </div>
+                    <p>研究视觉风格特征，创建风格指南，为创作提供视觉方向指导。</p>
+                    <div class="agent-stats">
+                        <div class="stat">
+                            <span class="stat-value">85%</span>
+                            <span class="stat-label">准备就绪</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">4</span>
+                            <span class="stat-label">任务待办</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="agent-card">
+                    <div class="agent-header">
+                        <span class="agent-avatar">🤖</span>
+                        <div class="agent-info">
+                            <h3>即梦AI专家</h3>
+                            <span class="agent-role">技术专家</span>
+                        </div>
+                    </div>
+                    <p>精通即梦AI工具套件，优化提示词和参数，确保生成质量。</p>
+                    <div class="agent-stats">
+                        <div class="stat">
+                            <span class="stat-value">90%</span>
+                            <span class="stat-label">准备就绪</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">4</span>
+                            <span class="stat-label">任务待办</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 创作工具 -->
+    <section id="tools" class="section tools">
+        <div class="container">
+            <h2 class="section-title">🛠️ 创作工具</h2>
+            <p class="section-subtitle">在线创作，实时预览</p>
+            
+            <div class="tools-container">
+                <div class="tool-editor">
+                    <div class="editor-header">
+                        <h3><i class="fas fa-pen"></i> 剧本编辑器</h3>
+                        <div class="editor-actions">
+                            <button class="btn btn-sm"><i class="fas fa-play"></i> 生成</button>
+                            <button class="btn btn-sm"><i class="fas fa-save"></i> 保存</button>
+                        </div>
+                    </div>
+                    <div class="editor-body">
+                        <textarea id="scriptEditor" placeholder="在这里输入你的剧本..."># 梦境侦探 - 第一幕
+
+**场景**: 深夜的梦境实验室
+**时间**: 凌晨2点
+**人物**: 林梦（梦境侦探）
+
+林梦站在复杂的仪器前，屏幕上显示着脑波图案。
+她调整着设备，准备进入下一个梦境调查。
+
+**林梦**（自言自语）
+"这个梦境模式很特别...像是有人在刻意隐藏什么。"
+
+突然，仪器发出警报声，屏幕上的图案开始扭曲...</textarea>
+                    </div>
+                </div>
+                
+                <div class="tool-preview">
+                    <div class="preview-header">
+                        <h3><i class="fas fa-eye"></i> 实时预览</h3>
+                        <div class="preview-options">
+                            <select id="previewMode">
+                                <option value="text">文本预览</option>
+                                <option value="image">图片生成</option>
+                                <option value="storyboard">分镜预览</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="preview-body">
+                        <div class="preview-content" id="previewContent">
+                            <h4>梦境侦探 - 第一幕预览</h4>
+                            <p><strong>场景</strong>: 深夜的梦境实验室</p>
+                            <p><strong>描述</strong>: 林梦站在复杂的仪器前，屏幕上显示着脑波图案。她调整着设备，准备进入下一个梦境调查。</p>
+                            <p><strong>对话</strong>: "这个梦境模式很特别...像是有人在刻意隐藏什么。"</p>
+                            <div class="preview-action">
+                                <button class="btn btn-primary" onclick="generateImage()">
+                                    <i class="fas fa-magic"></i> 生成场景图片
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我们 -->
+    <section id="about" class="section about">
+        <div class="container">
+            <h2 class="section-title">📖 关于我们</h2>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="private-badge">
+                        <span class="badge-icon">🔒</span>
+                        <span class="badge-text">私人专属系统</span>
+                    </div>
+                    <h3>🎬 Nmyh NIUMA的私人AI导演工作室</h3>
+                    <p>这是为您一人定制的专属创作平台，基于导演思维OS 4.3构建，整合了多智能体协作系统和即梦AI创作工具。</p>
+                    
+                    <h4>系统特性</h4>
+                    <p><strong>私人专属</strong>: 仅为您一人服务，所有数据和创作成果完全私有</p>
+                    <p><strong>深度定制</strong>: 根据您的创作风格和需求优化系统配置</p>
+                    <p><strong>安全保密</strong>: 所有数据加密存储，确保创作隐私</p>
+                    <p><strong>持续优化</strong>: 根据您的使用反馈持续改进系统功能</p>
+                    
+                    <h4>技术特色</h4>
+                    <ul>
+                        <li><strong>导演思维OS 4.3</strong>: 系统化的创作方法论</li>
+                        <li><strong>多智能体协作</strong>: 5个专业智能体协同工作</li>
+                        <li><strong>即梦AI集成</strong>: 字节跳动先进的AI创作工具</li>
+                        <li><strong>记忆连续性</strong>: 智能记忆系统确保长期项目开发</li>
+                    </ul>
+                    
+                    <div class="contact-info">
+                        <h4>📞 联系我们</h4>
+                        <p>如有合作意向或技术支持需求，请通过以下方式联系我们：</p>
+                        <div class="contact-links">
+                            <a href="#" class="contact-link"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="#" class="contact-link"><i class="fab fa-telegram"></i> Telegram</a>
+                            <a href="#" class="contact-link"><i class="fas fa-envelope"></i> Email</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">2026-03-08</div>
+                        <div class="stat-label">系统启动</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">智能体数量</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">28.6%</div>
+                        <div class="stat-label">任务完成率</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">服务时间</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo">🎬</span>
+                    <h3>Nmyh NIUMA的AI导演工作室</h3>
+                    <p>私人专属 · 基于导演思维OS 4.3 · 仅为您一人服务</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>系统</h4>
+                        <a href="#features">核心功能</a>
+                        <a href="#agents">智能体团队</a>
+                        <a href="#tools">创作工具</a>
+                    </div>
+                    
+                    <div class="link-group">
+                        <h4>作品</h4>
+                        <a href="#works">作品展示</a>
+                        <a href="#">创作流程</a>
+                        <a href="#">技术文档</a>
+                    </div>
+                    
+                    <div class="link-group">
+                        <h4>支持</h4>
+                        <a href="#about">关于我们</a>
+                        <a href="#">使用教程</a>
+                        <a href="#">常见问题</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 AI导演工作室. 基于OpenClaw构建.</p>
+                <p>导演思维OS 4.3 | 多智能体协作系统 | 即梦AI集成</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html
