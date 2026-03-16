@@ -1,0 +1,627 @@
+/* 即梦AI专家专属样式 */
+
+:root {
+    /* AI专家主题色 */
+    --dreamai-primary: #7209B7;
+    --dreamai-secondary: #3A0CA3;
+    --dreamai-accent: #4361EE;
+    --dreamai-dark: #0D1B2A;
+    --dreamai-light: #E0E1DD;
+    
+    /* 渐变 */
+    --dreamai-gradient: linear-gradient(135deg, var(--dreamai-primary), var(--dreamai-accent));
+    --dreamai-gradient-subtle: linear-gradient(135deg, rgba(114, 9, 183, 0.1), rgba(67, 97, 238, 0.1));
+}
+
+/* AI专家特定样式 */
+.dreamai-avatar {
+    background: var(--dreamai-gradient);
+    color: white;
+    font-size: 2.5rem;
+    width: 70px;
+    height: 70px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(114, 9, 183, 0.3);
+}
+
+.dreamai-welcome {
+    background: var(--dreamai-gradient-subtle);
+    border-left: 5px solid var(--dreamai-primary);
+}
+
+/* AI预览 */
+.ai-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.ai-chip {
+    background: var(--dreamai-gradient);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(114, 9, 183, 0.3);
+}
+
+.ai-process {
+    width: 100%;
+    max-width: 200px;
+}
+
+.process-bar {
+    height: 8px;
+    background: var(--dreamai-gradient);
+    border-radius: 4px;
+    margin-bottom: 5px;
+    animation: processAnimation 2s infinite alternate;
+}
+
+@keyframes processAnimation {
+    0% { width: 60%; }
+    100% { width: 85%; }
+}
+
+/* 三栏布局 */
+.three-column-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+@media (max-width: 1200px) {
+    .three-column-layout {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .three-column-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 提示词编辑器 */
+.prompt-editor {
+    background: white;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(114, 9, 183, 0.1);
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+
+.editor-header {
+    background: var(--dreamai-gradient-subtle);
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(114, 9, 183, 0.1);
+}
+
+.editor-header h4 {
+    color: var(--dreamai-dark);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.editor-stats {
+    display: flex;
+    gap: 15px;
+    font-size: 0.9rem;
+}
+
+.editor-stats .stat {
+    color: var(--dreamai-dark);
+    font-weight: 500;
+}
+
+#promptInput {
+    width: 100%;
+    padding: 1.5rem;
+    border: none;
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    resize: vertical;
+    min-height: 150px;
+    color: var(--dreamai-dark);
+}
+
+#promptInput:focus {
+    outline: none;
+}
+
+.editor-controls {
+    padding: 1rem 1.5rem;
+    background: var(--dreamai-light);
+    display: flex;
+    gap: 10px;
+    border-top: 1px solid rgba(114, 9, 183, 0.1);
+}
+
+.editor-btn {
+    flex: 1;
+    padding: 0.75rem;
+    border: 2px solid rgba(114, 9, 183, 0.2);
+    border-radius: var(--radius);
+    background: white;
+    color: var(--dreamai-dark);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.editor-btn:hover {
+    border-color: var(--dreamai-primary);
+    color: var(--dreamai-primary);
+}
+
+.editor-btn.primary {
+    background: var(--dreamai-primary);
+    color: white;
+    border-color: var(--dreamai-primary);
+}
+
+.editor-btn.primary:hover {
+    background: #5a07a1;
+}
+
+/* 提示词组件 */
+.prompt-components {
+    background: white;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(114, 9, 183, 0.1);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.prompt-components h4 {
+    color: var(--dreamai-dark);
+    margin: 0 0 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.components-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.component-category h5 {
+    color: var(--dreamai-dark);
+    margin: 0 0 0.5rem 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.component-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.component-tag {
+    padding: 0.4rem 0.75rem;
+    background: var(--dreamai-light);
+    border: 1px solid rgba(114, 9, 183, 0.2);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: var(--dreamai-dark);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.component-tag:hover {
+    background: var(--dreamai-primary);
+    color: white;
+    border-color: var(--dreamai-primary);
+}
+
+/* 提示词分析 */
+.prompt-analysis {
+    background: white;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(114, 9, 183, 0.1);
+    padding: 1.5rem;
+}
+
+.prompt-analysis h4 {
+    color: var(--dreamai-dark);
+    margin: 0 0 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.analysis-metrics {
+    margin-bottom: 1.5rem;
+}
+
+.metric {
+    margin-bottom: 1rem;
+}
+
+.metric-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    color: var(--dreamai-dark);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.metric-bar {
+    height: 8px;
+    background: var(--dreamai-light);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.metric-fill {
+    height: 100%;
+    background: var(--dreamai-gradient);
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+.metric-value {
+    text-align: right;
+    margin-top: 0.25rem;
+    font-size: 0.85rem;
+    color: var(--dreamai-primary);
+    font-weight: 600;
+}
+
+.analysis-suggestions {
+    padding: 1rem;
+    background: var(--dreamai-light);
+    border-radius: var(--radius);
+    font-size: 0.9rem;
+    color: var(--dreamai-dark);
+    line-height: 1.5;
+}
+
+/* 参数控制面板 */
+.parameter-panel {
+    background: white;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(114, 9, 183, 0.1);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.parameter-group {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(114, 9, 183, 0.1);
+}
+
+.parameter-group:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.parameter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.parameter-header h5 {
+    color: var(--dreamai-dark);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+}
+
+.parameter-value {
+    color: var(--dreamai-primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.parameter-panel input[type="range"] {
+    width: 100%;
+    height: 8px;
+    -webkit-appearance: none;
+    background: linear-gradient(to right, var(--dreamai-light), var(--dreamai-primary));
+    border-radius: 4px;
+    outline: none;
+}
+
+.parameter-panel input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 24px;
+    height: 24px;
+    background: var(--dreamai-primary);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.parameter-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* 尺寸选项 */
+.size-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.size-option {
+    display: block;
+}
+
+.size-option input[type="radio"] {
+    display: none;
+}
+
+.size-option span {
+    display: block;
+    padding: 0.75rem;
+    background: var(--dreamai-light);
+    border: 2px solid rgba(114, 9, 183, 0.2);
+    border-radius: var(--radius);
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    color: var(--dreamai-dark);
+}
+
+.size-option input[type="radio"]:checked + span {
+    background: var(--dreamai-primary);
+    color: white;
+    border-color: var(--dreamai-primary);
+}
+
+/* 生成预设 */
+.presets-panel {
+    background: white;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(114, 9, 183, 0.1);
+    padding: 1.5rem;
+}
+
+.presets-panel h5 {
+    color: var(--dreamai-dark);
+    margin: 0 0 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+}
+
+.presets-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.preset-card {
+    padding: 1rem;
+    background: var(--dreamai-light);
+    border: 2px solid rgba(114, 9, 183, 0.2);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.preset-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--dreamai-primary);
+    box-shadow: 0 4px 12px rgba(114, 9, 183, 0.15);
+}
+
+.preset-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--dreamai-gradient);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.preset-info h6 {
+    margin: 0 0 0.25rem 0;
+    color: var(--dreamai-dark);
+    font-size: 0.9rem;
+}
+
+.preset-info p {
+    margin: 0;
+    color: #666;
+    font-size: 0.8rem;
+}
+
+/* 生成历史 */
+.generation-history {
+    background: white;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(114, 9, 183, 0.1);
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.generation-history h4 {
+    color: var(--dreamai-dark);
+    margin: 0 0 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.history-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+}
+
+.history-item {
+    aspect-ratio: 1;
+    background: var(--dreamai-light);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    position: relative;
+}
+
+.history-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(114, 9, 183, 0.2);
+}
+
+.history-preview {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--dreamai-primary), var(--dreamai-accent));
+}
+
+.history-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(13, 27, 42, 0.8);
+    color: white;
+    padding: 0.5rem;
+    font-size: 0.7rem;
+    text-align: center;
+}
+
+/* 技术资源 */
+.tech-resources {
+    background: white;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(114, 9, 183, 0.1);
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.tech-resources h4 {
+    color: var(--dreamai-dark);
+    margin: 0 0 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.resource-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.resource-item {
+    padding: 0.75rem;
+    background: var(--dreamai-light);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.resource-item:hover {
+    background: rgba(114, 9, 183, 0.1);
+    transform: translateX(5px);
+}
+
+.resource-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--dreamai-gradient);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.resource-info h6 {
+    margin: 0 0 0.25rem 0;
+    color: var(--dreamai-dark);
+    font-size: 0.9rem;
+}
+
+.resource-info p {
+    margin: 0;
+    color: #666;
+    font-size: 0.8rem;
+}
+
+/* 消息气泡AI风格 */
+.message.agent .message-avatar {
+    background: var(--dreamai-gradient);
+    color: white;
+}
+
+.message.agent .message-sender {
+    color: var(--dreamai-primary);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .dreamai-avatar {
+        width: 50px;
+        height: 50px;
+        font-size: 2rem;
+    }
+    
+    .components-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .size-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .presets-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .history-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* 动画 */
+@keyframes aiPulse {
+    0%, 100% {
+        box-shadow: 0 0

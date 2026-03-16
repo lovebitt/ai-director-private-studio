@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🤖 即梦AI专家 - AI导演工作室</title>
+    <link rel="stylesheet" href="../agents.css">
+    <link rel="stylesheet" href="dreamai.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="../../index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>返回工作室</span>
+                </a>
+                <div class="agent-header">
+                    <div class="agent-avatar dreamai-avatar">🤖</div>
+                    <div>
+                        <h1>即梦AI专家</h1>
+                        <p class="agent-tagline">AI生成专家 · 提示词工程 · 技术优化</p>
+                    </div>
+                </div>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-menu">
+                <a href="../../index.html">工作室首页</a>
+                <a href="../index.html">智能体中心</a>
+                <a href="../director/index.html">AI导演</a>
+                <a href="../visual/index.html">视觉风格</a>
+                <a href="#chat" class="active">AI对话</a>
+                <a href="#prompt">提示词工具</a>
+                <a href="#generate">生成控制</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容 -->
+    <main class="agent-container">
+        <!-- 欢迎区域 -->
+        <section class="welcome-section">
+            <div class="welcome-card dreamai-welcome">
+                <div class="welcome-content">
+                    <h2>欢迎来到AI生成实验室，Nmyh NIUMA！</h2>
+                    <p>我是您的专属即梦AI专家，专注于AI图像生成、提示词优化和技术参数调整。让我帮助您实现最理想的AI创作效果。</p>
+                    <div class="welcome-stats">
+                        <div class="stat">
+                            <i class="fas fa-robot"></i>
+                            <span>AI生成专家</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-keyboard"></i>
+                            <span>提示词优化</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-sliders-h"></i>
+                            <span>参数调优</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="welcome-image">
+                    <div class="ai-preview">
+                        <div class="ai-chip">
+                            <i class="fas fa-microchip"></i>
+                            <span>AI Core</span>
+                        </div>
+                        <div class="ai-process">
+                            <div class="process-bar" style="width: 75%;"></div>
+                            <span>生成优化中...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 三栏布局 -->
+        <div class="three-column-layout">
+            <!-- 左侧：AI对话 -->
+            <section class="chat-section" id="chat">
+                <div class="section-header">
+                    <h3><i class="fas fa-comments"></i> AI技术对话</h3>
+                    <p>与我讨论AI生成技术，获取专业的技术建议</p>
+                </div>
+                
+                <div class="chat-container">
+                    <!-- 聊天消息区域 -->
+                    <div class="chat-messages" id="chatMessages">
+                        <!-- 欢迎消息 -->
+                        <div class="message agent">
+                            <div class="message-avatar">🤖</div>
+                            <div class="message-content">
+                                <div class="message-header">
+                                    <span class="message-sender">即梦AI专家</span>
+                                    <span class="message-time">刚刚</span>
+                                </div>
+                                <div class="message-text">
+                                    您好！我是您的即梦AI专家，专注于AI图像生成和优化技术。我可以帮助您：
+                                    <br><br>
+                                    🤖 <strong>提示词优化</strong> - 优化AI生成提示词
+                                    <br>
+                                    🎨 <strong>参数调整</strong> - 调整生成参数获得最佳效果
+                                    <br>
+                                    🔧 <strong>技术方案</strong> - 提供AI生成技术方案
+                                    <br>
+                                    📊 <strong>效果分析</strong> - 分析生成结果并提供改进建议
+                                    <br><br>
+                                    请分享您的AI生成需求或技术问题！
+                                </div>
+                                <div class="message-actions">
+                                    <button class="action-btn" data-action="optimize-prompt">
+                                        <i class="fas fa-magic"></i> 优化提示词
+                                    </button>
+                                    <button class="action-btn" data-action="adjust-parameters">
+                                        <i class="fas fa-sliders-h"></i> 调整参数
+                                    </button>
+                                    <button class="action-btn" data-action="technical-advice">
+                                        <i class="fas fa-cogs"></i> 技术建议
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 快速提示 -->
+                    <div class="quick-prompts">
+                        <button class="prompt-btn" data-prompt="prompt-optimization">
+                            <i class="fas fa-magic"></i> 帮我优化这个AI提示词
+                        </button>
+                        <button class="prompt-btn" data-prompt="parameter-help">
+                            <i class="fas fa-sliders-h"></i> 如何调整生成参数获得更好效果？
+                        </button>
+                        <button class="prompt-btn" data-prompt="technical-issue">
+                            <i class="fas fa-bug"></i> 遇到AI生成技术问题，请帮忙解决
+                        </button>
+                    </div>
+                    
+                    <!-- 消息输入区域 -->
+                    <div class="message-input-area">
+                        <div class="input-tools">
+                            <button class="tool-btn" title="上传图片">
+                                <i class="fas fa-image"></i>
+                            </button>
+                            <button class="tool-btn" title="代码模式">
+                                <i class="fas fa-code"></i>
+                            </button>
+                            <button class="tool-btn" title="技术文档">
+                                <i class="fas fa-book"></i>
+                            </button>
+                        </div>
+                        <textarea 
+                            id="messageInput" 
+                            placeholder="描述您的AI生成需求，或分享提示词让我优化..." 
+                            rows="2"></textarea>
+                        <button id="sendMessage" class="send-btn">
+                            <i class="fas fa-paper-plane"></i> 发送
+                        </button>
+                    </div>
+                    
+                    <!-- 聊天控制 -->
+                    <div class="chat-controls">
+                        <button id="clearChat" class="control-btn">
+                            <i class="fas fa-trash"></i> 清空对话
+                        </button>
+                        <button id="saveTechnical" class="control-btn">
+                            <i class="fas fa-save"></i> 保存技术方案
+                        </button>
+                        <button id="exportTechnical" class="control-btn">
+                            <i class="fas fa-download"></i> 导出文档
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 中间：提示词工具 -->
+            <section class="tools-section" id="prompt">
+                <div class="section-header">
+                    <h3><i class="fas fa-keyboard"></i> 提示词优化工具</h3>
+                    <p>专业工具助您编写完美的AI提示词</p>
+                </div>
+                
+                <!-- 提示词编辑器 -->
+                <div class="prompt-editor">
+                    <div class="editor-header">
+                        <h4><i class="fas fa-edit"></i> 提示词编辑器</h4>
+                        <div class="editor-stats">
+                            <span class="stat">字数: <span id="wordCount">0</span></span>
+                            <span class="stat">复杂度: <span id="complexityScore">0</span></span>
+                        </div>
+                    </div>
+                    <textarea 
+                        id="promptInput" 
+                        placeholder="在此输入您的AI生成提示词..." 
+                        rows="6"></textarea>
+                    <div class="editor-controls">
+                        <button id="analyzePrompt" class="editor-btn">
+                            <i class="fas fa-search"></i> 分析提示词
+                        </button>
+                        <button id="optimizePrompt" class="editor-btn primary">
+                            <i class="fas fa-magic"></i> 智能优化
+                        </button>
+                        <button id="clearPrompt" class="editor-btn">
+                            <i class="fas fa-times"></i> 清空
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 提示词组件 -->
+                <div class="prompt-components">
+                    <h4><i class="fas fa-puzzle-piece"></i> 提示词组件库</h4>
+                    <div class="components-grid">
+                        <div class="component-category">
+                            <h5>主体描述</h5>
+                            <div class="component-tags">
+                                <span class="component-tag" data-component="subject">人物肖像</span>
+                                <span class="component-tag" data-component="subject">风景场景</span>
+                                <span class="component-tag" data-component="subject">物体特写</span>
+                                <span class="component-tag" data-component="subject">抽象概念</span>
+                            </div>
+                        </div>
+                        <div class="component-category">
+                            <h5>风格修饰</h5>
+                            <div class="component-tags">
+                                <span class="component-tag" data-component="style">照片级写实</span>
+                                <span class="component-tag" data-component="style">动漫风格</span>
+                                <span class="component-tag" data-component="style">油画质感</span>
+                                <span class="component-tag" data-component="style">水彩效果</span>
+                            </div>
+                        </div>
+                        <div class="component-category">
+                            <h5>质量参数</h5>
+                            <div class="component-tags">
+                                <span class="component-tag" data-component="quality">8K超高清</span>
+                                <span class="component-tag" data-component="quality">电影灯光</span>
+                                <span class="component-tag" data-component="quality">专业摄影</span>
+                                <span class="component-tag" data-component="quality">细节丰富</span>
+                            </div>
+                        </div>
+                        <div class="component-category">
+                            <h5>氛围情绪</h5>
+                            <div class="component-tags">
+                                <span class="component-tag" data-component="mood">温暖阳光</span>
+                                <span class="component-tag" data-component="mood">神秘夜晚</span>
+                                <span class="component-tag" data-component="mood">活力四射</span>
+                                <span class="component-tag" data-component="mood">宁静平和</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 提示词分析 -->
+                <div class="prompt-analysis">
+                    <h4><i class="fas fa-chart-bar"></i> 提示词分析报告</h4>
+                    <div class="analysis-metrics">
+                        <div class="metric">
+                            <div class="metric-label">清晰度</div>
+                            <div class="metric-bar">
+                                <div class="metric-fill" id="clarityScore" style="width: 0%;"></div>
+                            </div>
+                            <div class="metric-value" id="clarityValue">0%</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">具体性</div>
+                            <div class="metric-bar">
+                                <div class="metric-fill" id="specificityScore" style="width: 0%;"></div>
+                            </div>
+                            <div class="metric-value" id="specificityValue">0%</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">创意性</div>
+                            <div class="metric-bar">
+                                <div class="metric-fill" id="creativityScore" style="width: 0%;"></div>
+                            </div>
+                            <div class="metric-value" id="creativityValue">0%</div>
+                        </div>
+                    </div>
+                    <div class="analysis-suggestions" id="promptSuggestions">
+                        <!-- 动态生成建议 -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- 右侧：生成控制 -->
+            <section class="tools-section" id="generate">
+                <div class="section-header">
+                    <h3><i class="fas fa-sliders-h"></i> 生成参数控制</h3>
+                    <p>精细调整AI生成参数，获得理想效果</p>
+                </div>
+                
+                <!-- 参数控制面板 -->
+                <div class="parameter-panel">
+                    <div class="parameter-group">
+                        <div class="parameter-header">
+                            <h5><i class="fas fa-image"></i> 图像质量</h5>
+                            <span class="parameter-value" id="qualityValue">7</span>
+                        </div>
+                        <input type="range" id="qualitySlider" min="1" max="10" value="7" step="1">
+                        <div class="parameter-labels">
+                            <span>基础</span>
+                            <span>标准</span>
+                            <span>优秀</span>
+                            <span>卓越</span>
+                            <span>极致</span>
+                        </div>
+                    </div>
+                    
+                    <div class="parameter-group">
+                        <div class="parameter-header">
+                            <h5><i class="fas fa-paint-brush"></i> 风格强度</h5>
+                            <span class="parameter-value" id="styleValue">65%</span>
+                        </div>
+                        <input type="range" id="styleSlider" min="0" max="100" value="65" step="5">
+                        <div class="parameter-labels">
+                            <span>弱</span>
+                            <span>中</span>
+                            <span>强</span>
+                        </div>
+                    </div>
+                    
+                    <div class="parameter-group">
+                        <div class="parameter-header">
+                            <h5><i class="fas fa-lightbulb"></i> 创意自由度</h5>
+                            <span class="parameter-value" id="creativityValue">0.7</span>
+                        </div>
+                        <input type="range" id="creativitySlider" min="0" max="1" value="0.7" step="0.1">
+                        <div class="parameter-labels">
+                            <span>精确</span>
+                            <span>平衡</span>
+                            <span>创意</span>
+                        </div>
+                    </div>
+                    
+                    <div class="parameter-group">
+                        <div class="parameter-header">
+                            <h5><i class="fas fa-expand-alt"></i> 图像尺寸</h5>
+                            <span class="parameter-value" id="sizeValue">1024×1024</span>
+                        </div>
+                        <div class="size-options">
+                            <label class="size-option">
+                                <input type="radio" name="size" value="512x512" checked>
+                                <span>512×512</span>
+                            </label>
+                            <label class="size-option">
+                                <input type="radio" name="size" value="768x768">
+                                <span>768×768</span>
+                            </label>
+                            <label class="size-option">
+                                <input type="radio" name="size" value="1024x1024">
+                                <span>1024×1024</span>
+                            </label>
+                            <label class="size-option">
+                                <input type="radio" name="size" value="custom">
+                                <span>自定义</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 生成预设 -->
+                <div class="presets-panel">
+                    <h5><i class="fas fa-star"></i> 生成预设</h5>
+                    <div class="presets-grid">
+                        <div class="preset-card" data-preset="photo-realistic">
+                            <div class="preset-icon">
+                                <i class="fas fa-camera"></i>
+                            </div>
+                            <div class="preset-info">
+                                <h6>照片级写实</h6>
+                                <p>高质量摄影效果</p>
+                            </div>
+                        </div>
+                        <div class="preset-card" data-preset="artistic-painting">
+                            <div class="preset-icon">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <div class="preset-info">
+                                <h6>艺术绘画</h6>
+                                <p>油画/水彩风格</p>
+                            </div>
+                        </div>
+                        <div class="preset-card" data-preset="anime-style">
+                            <div class="preset-icon">
+                                <i class="fas fa-gamepad"></i>
+                            </div>
+                            <div class="preset-info">
+                                <h6>动漫风格</h6>
+                                <p>日系动漫效果</p>
+                            </div>
+                        </div>
+                        <div class="preset-card" data-preset="concept-art">
+                            <div class="preset-icon">
+                                <i class="fas fa-drafting-compass"></i>
+                            </div>
+                            <div class="preset-info">
