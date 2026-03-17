@@ -393,4 +393,176 @@
                                         <div class="metric-bar">
                                             <div class="metric-fill" style="width: 75%"></div>
                                         </div>
-                                        <span class="metric-value">75%</
+                                        <span class="metric-value">75%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 脚本引用 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/xml/xml.min.js"></script>
+    <script src="../agents.js"></script>
+    <script src="director.js"></script>
+    
+    <script>
+        // 初始化AI导演智能体
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🎬 AI导演智能体初始化...');
+            
+            // 导航切换
+            const navToggle = document.getElementById('navToggle');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            if (navToggle && navMenu) {
+                navToggle.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                    navToggle.classList.toggle('active');
+                });
+            }
+            
+            // 平滑滚动
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        
+                        // 移动端关闭菜单
+                        if (window.innerWidth <= 768 && navMenu) {
+                            navMenu.classList.remove('active');
+                            navToggle.classList.remove('active');
+                        }
+                    }
+                });
+            });
+            
+            // 初始化CodeMirror编辑器
+            const scriptEditor = document.getElementById('scriptEditor');
+            if (scriptEditor) {
+                const editor = CodeMirror.fromTextArea(scriptEditor, {
+                    lineNumbers: true,
+                    mode: 'javascript',
+                    theme: 'dracula',
+                    lineWrapping: true,
+                    indentUnit: 4
+                });
+                
+                editor.setSize('100%', '400px');
+            }
+            
+            // 任务切换
+            const taskTabs = document.querySelectorAll('.task-tab');
+            taskTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    taskTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const taskId = this.dataset.task;
+                    const taskContents = document.querySelectorAll('.task-content');
+                    taskContents.forEach(content => {
+                        content.classList.remove('active');
+                        if (content.id === taskId + '-content') {
+                            content.classList.add('active');
+                        }
+                    });
+                });
+            });
+            
+            // 质量检查切换
+            const checkItems = document.querySelectorAll('.check-item input[type="checkbox"]');
+            checkItems.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    const statusSpan = this.parentElement.querySelector('.check-status');
+                    if (this.checked) {
+                        statusSpan.textContent = '已完成';
+                        statusSpan.className = 'check-status completed';
+                    } else {
+                        statusSpan.textContent = '待检查';
+                        statusSpan.className = 'check-status pending';
+                    }
+                });
+            });
+            
+            // 发送消息功能
+            const sendButton = document.getElementById('sendMessage');
+            const messageInput = document.getElementById('messageInput');
+            const chatMessages = document.getElementById('chatMessages');
+            
+            if (sendButton && messageInput && chatMessages) {
+                sendButton.addEventListener('click', function() {
+                    const message = messageInput.value.trim();
+                    if (!message) return;
+                    
+                    // 添加用户消息
+                    const userMessage = document.createElement('div');
+                    userMessage.className = 'message user';
+                    userMessage.innerHTML = `
+                        <div class="message-content">
+                            <div class="message-header">
+                                <span class="message-sender">您</span>
+                                <span class="message-time">刚刚</span>
+                            </div>
+                            <div class="message-text">${message}</div>
+                        </div>
+                        <div class="message-avatar">👤</div>
+                    `;
+                    
+                    chatMessages.appendChild(userMessage);
+                    messageInput.value = '';
+                    
+                    // 模拟AI响应
+                    setTimeout(() => {
+                        const responses = [
+                            "🎬 **收到您的创作需求！**\n\n我正在分析项目结构，将为您制定详细的创作计划。",
+                            "📋 **创作建议**：\n\n1. 先确定故事的核心主题\n2. 设计主要角色的性格弧线\n3. 构建三幕式叙事结构\n4. 安排情感高潮和转折点",
+                            "⏱️ **时间规划**：\n\n• 概念阶段：2-3天\n• 剧本创作：1-2周\n• 视觉设计：3-5天\n• 分镜制作：2-3天\n• 后期制作：1周",
+                            "🎯 **质量控制**：\n\n我将监控每个创作环节的质量，确保故事连贯性、视觉一致性和情感表达效果。"
+                        ];
+                        
+                        const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                        
+                        const agentMessage = document.createElement('div');
+                        agentMessage.className = 'message agent';
+                        agentMessage.innerHTML = `
+                            <div class="message-avatar">🎬</div>
+                            <div class="message-content">
+                                <div class="message-header">
+                                    <span class="message-sender">AI导演</span>
+                                    <span class="message-time">刚刚</span>
+                                </div>
+                                <div class="message-text">${randomResponse}</div>
+                            </div>
+                        `;
+                        
+                        chatMessages.appendChild(agentMessage);
+                        chatMessages.scrollTop = chatMessages.scrollHeight;
+                    }, 1000);
+                });
+                
+                messageInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        sendButton.click();
+                    }
+                });
+            }
+            
+            console.log('✅ AI导演智能体初始化完成');
+        });
+    </script>
+</body>
+</html>
