@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📝 总编剧智能体 - AI导演工作室</title>
+    <link rel="stylesheet" href="../agents.css">
+    <link rel="stylesheet" href="screenwriter.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="../../index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>返回工作室</span>
+                </a>
+                <div class="agent-header">
+                    <div class="agent-avatar screenwriter-avatar">📝</div>
+                    <div>
+                        <h1>总编剧智能体</h1>
+                        <p class="agent-tagline">故事创作 · 角色设计 · 叙事结构 · 对话生成</p>
+                    </div>
+                </div>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-menu">
+                <a href="../../index.html">工作室首页</a>
+                <a href="../index.html">智能体中心</a>
+                <a href="../director/index.html">AI导演</a>
+                <a href="../visual/index.html">视觉风格</a>
+                <a href="../dreamai/index.html">即梦AI专家</a>
+                <a href="#chat" class="active">编剧对话</a>
+                <a href="#story">故事创作</a>
+                <a href="#characters">角色设计</a>
+                <a href="#structure">叙事结构</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容 -->
+    <main class="agent-container">
+        <!-- 欢迎区域 -->
+        <section class="welcome-section">
+            <div class="welcome-card screenwriter-welcome">
+                <div class="welcome-content">
+                    <h2>欢迎来到故事创作空间，Nmyh NIUMA！</h2>
+                    <p>我是您的专属总编剧智能体，专注于故事创作、角色设计和叙事结构。让我帮助您将创意转化为引人入胜的叙事作品。</p>
+                    <div class="welcome-stats">
+                        <div class="stat">
+                            <i class="fas fa-book"></i>
+                            <span>故事创作专家</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-users"></i>
+                            <span>角色设计大师</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-project-diagram"></i>
+                            <span>叙事结构指导</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="welcome-image">
+                    <div class="story-preview">
+                        <div class="story-chapter">
+                            <i class="fas fa-feather-alt"></i>
+                            <span>第一章</span>
+                        </div>
+                        <div class="story-progress">
+                            <div class="progress-bar" style="width: 65%;"></div>
+                            <span>故事构建中...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 三栏布局 -->
+        <div class="three-column-layout">
+            <!-- 左侧：编剧对话 -->
+            <section class="chat-section" id="chat">
+                <div class="section-header">
+                    <h3><i class="fas fa-comments"></i> 编剧创作对话</h3>
+                    <p>与我讨论您的故事创意，获取专业的编剧建议</p>
+                </div>
+                
+                <div class="chat-container">
+                    <!-- 聊天消息区域 -->
+                    <div class="chat-messages" id="chatMessages">
+                        <!-- 欢迎消息 -->
+                        <div class="message agent">
+                            <div class="message-avatar">📝</div>
+                            <div class="message-content">
+                                <div class="message-header">
+                                    <span class="message-sender">总编剧智能体</span>
+                                    <span class="message-time">刚刚</span>
+                                </div>
+                                <div class="message-text">
+                                    您好！我是您的总编剧智能体，专注于故事创作和叙事设计。我可以帮助您：
+                                    <br><br>
+                                    📖 <strong>故事构思</strong> - 从创意到完整故事大纲
+                                    <br>
+                                    👥 <strong>角色设计</strong> - 创造立体生动的角色
+                                    <br>
+                                    🏗️ <strong>结构规划</strong> - 设计合理的叙事结构
+                                    <br>
+                                    💬 <strong>对话创作</strong> - 编写自然生动的对话
+                                    <br><br>
+                                    请分享您的故事创意或描述您想创作的故事类型！
+                                </div>
+                                <div class="message-actions">
+                                    <button class="action-btn" data-action="brainstorm-story">
+                                        <i class="fas fa-lightbulb"></i> 头脑风暴
+                                    </button>
+                                    <button class="action-btn" data-action="develop-character">
+                                        <i class="fas fa-user-plus"></i> 设计角色
+                                    </button>
+                                    <button class="action-btn" data-action="plan-structure">
+                                        <i class="fas fa-sitemap"></i> 规划结构
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 快速提示 -->
+                    <div class="quick-prompts">
+                        <button class="prompt-btn" data-prompt="story-idea">
+                            <i class="fas fa-lightbulb"></i> 帮我构思一个有趣的故事
+                        </button>
+                        <button class="prompt-btn" data-prompt="character-help">
+                            <i class="fas fa-user"></i> 设计一个令人难忘的角色
+                        </button>
+                        <button class="prompt-btn" data-prompt="structure-advice">
+                            <i class="fas fa-project-diagram"></i> 给我的故事提供结构建议
+                        </button>
+                    </div>
+                    
+                    <!-- 消息输入区域 -->
+                    <div class="message-input-area">
+                        <div class="input-tools">
+                            <button class="tool-btn" title="添加故事元素">
+                                <i class="fas fa-plus-circle"></i>
+                            </button>
+                            <button class="tool-btn" title="引用经典">
+                                <i class="fas fa-quote-right"></i>
+                            </button>
+                            <button class="tool-btn" title="保存草稿">
+                                <i class="fas fa-save"></i>
+                            </button>
+                        </div>
+                        <textarea 
+                            id="messageInput" 
+                            placeholder="描述您的故事创意，或提出具体的编剧问题..." 
+                            rows="2"></textarea>
+                        <button id="sendMessage" class="send-btn">
+                            <i class="fas fa-paper-plane"></i> 发送
+                        </button>
+                    </div>
+                    
+                    <!-- 聊天控制 -->
+                    <div class="chat-controls">
+                        <button id="clearChat" class="control-btn">
+                            <i class="fas fa-trash"></i> 清空对话
+                        </button>
+                        <button id="saveStory" class="control-btn">
+                            <i class="fas fa-save"></i> 保存故事
+                        </button>
+                        <button id="exportScript" class="control-btn">
+                            <i class="fas fa-download"></i> 导出剧本
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 中栏：故事创作工具 -->
+            <section class="tools-section" id="story">
+                <div class="section-header">
+                    <h3><i class="fas fa-book"></i> 故事创作工具</h3>
+                    <p>专业工具助您构建完整故事</p>
+                </div>
+                
+                <!-- 工具折叠区域 -->
+                <div class="tools-grid">
+                    <!-- 故事构思工具 -->
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <h4><i class="fas fa-lightbulb"></i> 故事构思器</h4>
+                            <button class="tool-toggle">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="tool-body">
+                            <div class="story-genre">
+                                <label for="storyGenre">故事类型：</label>
+                                <select id="storyGenre">
+                                    <option value="fantasy">奇幻</option>
+                                    <option value="sci-fi">科幻</option>
+                                    <option value="romance">爱情</option>
+                                    <option value="mystery">悬疑</option>
+                                    <option value="adventure">冒险</option>
+                                    <option value="drama">剧情</option>
+                                </select>
+                            </div>
+                            <div class="story-theme">
+                                <label for="storyTheme">核心主题：</label>
+                                <select id="storyTheme">
+                                    <option value="growth">成长与蜕变</option>
+                                    <option value="love">爱与牺牲</option>
+                                    <option value="justice">正义与复仇</option>
+                                    <option value="identity">身份与自我</option>
+                                    <option value="freedom">自由与束缚</option>
+                                    <option value="truth">真相与谎言</option>
+                                </select>
+                            </div>
+                            <button id="generateStoryIdea" class="tool-action-btn">
+                                <i class="fas fa-magic"></i> 生成故事创意
+                            </button>
+                            <div class="story-ideas" id="storyIdeas">
+                                <!-- 动态生成故事创意 -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 情节设计工具 -->
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <h4><i class="fas fa-road"></i> 情节设计器</h4>
+                            <button class="tool-toggle">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="tool-body">
+                            <div class="plot-structure">
+                                <label>情节结构：</label>
+                                <div class="plot-options">
+                                    <label class="plot-option">
+                                        <input type="radio" name="plot" value="three-act" checked>
+                                        <span>三幕式</span>
+                                    </label>
+                                    <label class="plot-option">
+                                        <input type="radio" name="plot" value="hero-journey">
+                                        <span>英雄之旅</span>
+                                    </label>
+                                    <label class="plot-option">
+                                        <input type="radio" name="plot" value="save-the-cat">
+                                        <span>救猫咪</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="plot-elements">
+                                <label>关键情节点：</label>
+                                <div class="plot-points">
+                                    <button class="plot-point-btn" data-point="inciting">激励事件</button>
+                                    <button class="plot-point-btn" data-point="climax">高潮</button>
+                                    <button class="plot-point-btn" data-point="resolution">结局</button>
+                                </div>
+                            </div>
+                            <button id="designPlot" class="tool-action-btn">
+                                <i class="fas fa-pencil-alt"></i> 设计情节大纲
+                            </button>
+                            <div class="plot-outline" id="plotOutline">
+                                <!-- 动态生成情节大纲 -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 冲突设计工具 -->
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <h4><i class="fas fa-crosshairs"></i> 冲突设计器</h4>
+                            <button class="tool-toggle">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="tool-body">
+                            <div class="conflict-type">
+                                <label>冲突类型：</label>
+                                <select id="conflictType">
+                                    <option value="man-vs-man">人与人</option>
+                                    <option value="man-vs-self">人与自我</option>
+                                    <option value="man-vs-society">人与社会</option>
+                                    <option value="man-vs-nature">人与自然</option>
+                                    <option value="man-vs-technology">人与科技</option>
+                                </select>
+                            </div>
+                            <div class="conflict-intensity">
+                                <label>冲突强度：</label>
+                                <input type="range" id="conflictIntensity" min="1" max="10" value="5">
+                                <div class="intensity-labels">
+                                    <span>温和</span>
+                                    <span>中等</span>
+                                    <span>激烈</span>
+                                </div>
+                            </div>
+                            <button id="designConflict" class="tool-action-btn">
+                                <i class="fas fa-fire"></i> 设计核心冲突
+                            </button>
+                            <div class="conflict-design" id="conflictDesign">
+                                <!-- 动态生成冲突设计 -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 世界观构建工具 -->
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <h4><i class="fas fa-globe"></i> 世界观构建器</h4>
+                            <button class="tool-toggle">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="tool-body">
+                            <div class="world-type">
+                                <label>世界类型：</label>
+                                <select id="worldType">
+                                    <option value="realistic">现实世界</option>
+                                    <option value="fantasy">奇幻世界</option>
+                                    <option value="sci-fi">科幻世界</option>
+                                    <option value="historical">历史世界</option>
+                                    <option value="alternate">平行世界</option>
+                                </select>
+                            </div>
+                            <div class="world-detail">
+                                <label>细节程度：</label>
+                                <select id="worldDetail">
+                                    <option value="basic">基础设定</option>
+                                    <option value="detailed">详细设定</option>
+                                    <option value="comprehensive">全面设定</option>
+                                </select>
+                            </div>
+                            <button id="buildWorld" class="tool-action-btn">
+                                <i class="fas fa-archway"></i> 构建世界观
+                            </button>
+                            <div class="world-building" id="worldBuilding">
+                                <!-- 动态生成世界观 -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 右侧：角色设计工具 -->
+            <section class="tools-section" id="characters">
+                <div class="section-header">
+                    <h3><i class="fas fa-users"></i> 角色设计工具</h3>
+                    <p>创造立体生动的故事角色</p>
+                </div>
+                
+                <div class="tools-grid">
+                    <!-- 主角设计工具 -->
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <h4><i class="fas fa-crown"></i> 主角设计器</h4>
+                            <button class="tool-toggle">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="tool-body">
+                            <div class="protagonist-type">
+                                <label>主角类型：</label>
+                                <select id="protagonistType">
+                                    <option value="hero">英雄型</option>
+                                    <option value="antihero">反英雄</option>
+                                    <option value="everyman">普通人</option>
+                                    <option value="outsider">局外人</option>
+                                    <option value="chosen-one">天选之人</option>
+                                </select>
+                            </div>
+                            <div class="character-archetype">
+                                <label>角色原型：</label>
+                                <select id="characterArchetype">
+                                    <option value="warrior">战士</option>
+                                    <option value="mentor">导师</option>
+                                    <option value="trickster">捣蛋鬼</option>
+                                    <option value="caregiver">照顾者</option>
+                                    <option value="explorer">探索者</option>
+                                </select>
+                            </div>
+                            <button id="designProtagonist" class="tool-action-btn">
+                                <i class="fas fa-user-edit"></i> 设计主角
+                            </button>
+                            <div class="protagonist-design" id="protagonistDesign">
+                                <!-- 动态生成主角设计 -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 配角设计工具 -->
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <h4><i class="fas fa-user-friends"></i> 配角设计器</h4>
+                            <button class="tool-toggle">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="tool-body">
+                            <div class="supporting-role">
+                                <label>配角功能：</label>
+                                <select id="supportingRole">
+                                    <option value="sidekick">伙伴</option>
+                                    <option value="mentor">导师</option>
+                                    <option value="love-interest">爱情对象</option>
+                                    <option value="antagonist">反派</option>
+                                    <option value="comic-relief">喜剧 relief</option>
+                                </select>
+                            </div>
+                            <div class="relationship-type">
+                                <label>与主角关系：</label>
+                                <select id="relationshipType">
+                                    <option value="friend">朋友</option>
+                                    <option value="rival">对手</option>
+                                    <option value="family">家人</option>
+                                    <option value="mentor-student">师徒</option>
+                                    <option value="love-hate">爱恨交织</option>
+                                </select>
+                            </div>
+                            <button id="designSupporting" class="tool-action-btn">
+                                <i class="fas fa-user-plus"></i> 设计配角
+                            </button>
+                            <div class="supporting-design" id="supportingDesign">
+                                <!-- 动态生成配角设计 -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 角色关系工具 -->
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <h4><i class="fas fa-project-diagram"></i> 角色关系图</h4>
+                            <button class="tool-toggle">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="tool-body">
+                            <div class="relationship-complexity">
+                                <label>关系复杂度：</label>
+                                <input type="range" id="relationshipComplexity" min="1" max="5" value="3">
+                                <div class="complexity-labels">
+                                    <span>简单</span>
+                                    <span>中等</span>
+                                    <span>复杂</span>
+                                </div>
+                            </div>
+                            <div class="relationship-dynamics">
+                                <label>关系动态：</label>
+                                <div class="dynamics-options">
+                                    <label class="dynamics-option">
+                                        <input type="checkbox" name="dynamics" value="allies" checked>
+                                        <span>盟友</span>
+                                    </label>
+                                    <label class="dynamics-option">
+                                        <input type="checkbox" name="dynamics" value="enemies">
+                                        <span>敌人</span>
+                                    </label>
+                                    <label class="dynamics-option">
+                                        <input type="checkbox" name="dynamics" value="family">
+                                        <span>家庭</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <button id="generateRelationships" class="tool-action-btn">
+                                <i class="fas fa-network-wired"></i> 生成关系图
+                            </button>
+                            <div class="relationship-map" id="relationshipMap">
+                                <!-- 动态生成关系图 -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 角色发展工具 -->
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <h4><i class="fas fa-chart-line"></i> 角色发展弧</h4>
+                            <button class="tool-toggle">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="tool-body">
+                            <div class="character-arc">
+                                <label>发展弧类型：</label>
+                                <select id="characterArc">
+                                    <option value="positive">正向成长</option>
+                                    <option value="negative">负向下滑</option>
+                                    <option value="flat">平稳不变</option>
+                                    <option value="transformative">彻底转变</option>
+                                </select>
+                            </div>
+                            <div class="arc-intensity">
+                                <label>转变强度：</label>
+                                <input type="range" id="arcIntensity" min="1" max="10" value="7">
+                                <div class="intensity-labels">
+                                    <span>轻微</span>
+                                    <span>中等</span>
+                                    <span>剧烈</span>
+                                </div>
+                            </div>
+                            <button id="designCharacterArc" class="tool-action-btn">
+                                <i class="fas fa-road"></i> 设计发展弧
+                            </button>
+                            <div class="character-arc-chart" id="characterArcChart">
+                                <!-- 动态生成发展弧 -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- 叙事结构工具 -->
+        <section class="full-width-section" id="structure">
+            <div class="section-header">
+                <h3><i class="fas fa-sitemap"></i> 叙事结构工具</h3>
+                <p>专业工具助您设计合理的叙事结构</p>
+            </div>
+            
+            <div class="structure-tools">
+                <!-- 三幕式结构 -->
+                <div class="structure-card">
+                    <h4><i class="fas fa-th-large"></i> 三幕式结构</h4>
+                    <div class="three-act-structure">
+                        <div class="act act-1">
+                            <div class="act-header">
+                                <h5>第一幕：开端</h5>
+                                <span>25%</span>
+                            </div>
+                            <div class="act-points">
+                                <div class="act-point" data-point="hook">
+                                    <i class="fas fa-fish"></i>
+                                    <span>钩子</span>
+                                </div>
+                                <div class="act-point" data-point="inciting">
+                                    <i class="fas fa-bolt"></i>
+                                    <span>激励事件</span>
+                                </div>
+                                <div class="act-point" data-point="decision">
+                                    <i class="fas fa-crossroads"></i>
+                                    <span>关键决定</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="act act-2">
+                            <div class="act-header">
+                                <h5>第二幕：对抗</h5>
+                                <span>50%</span>
+                            </div>
+                            <div class="act-points">
+                                <div class="act-point" data-point="rising">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>上升行动</span>
+                                </div>
+                                <div class="act-point" data-point="midpoint">
+                                    <i class="fas fa-bullseye"></i>
+                                    <span>中点转折</span>
+                                </div>
+                                <div class="act-point" data-point="all-is-lost">
+                                    <i class="fas fa-skull-crossbones"></i>
+                                    <span>一切尽失</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="act act-3">
+                            <div class="act-header">
+                                <h5>第三幕：结局</h5>
+                                <span>25%</span>
+                            </div>
+                            <div class="act-points">
+                                <div class="act-point" data-point="climax">
+                                    <i class="fas fa-mountain"></i>
+                                    <span>高潮</span>
+                                </div>
+                                <div class="act-point" data-point="resolution">
+                                    <i class="fas fa-flag-checkered"></i>
+                                    <span>结局</span>
+                                </div>
+                                <div class="act-point" data-point="denouement">
+                                    <i class="fas fa-sun"></i>
+                                    <span>尾声</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="applyThreeAct" class="structure-action-btn">
+                        <i class="fas fa-check"></i> 应用三幕式结构
+                    </button>
+                </div>
+                
+                <!-- 英雄之旅结构 -->
+                <div class="structure-card">
+                    <h4><i class="fas fa-route"></i> 英雄之旅</h4>
+                    <div class="hero-journey">
+                        <div class="journey-stage ordinary-world">
+                            <i class="fas fa-home"></i>
+                            <span>平凡世界</span>
+                        </div>
+                        <div class="journey-stage call-to-adventure">
+                            <i class="fas fa-bullhorn"></i>
+                            <span>冒险召唤</span>
+                        </div>
+                        <div class="journey-stage refusal">
+                            <i class="fas fa-times-circle"></i>
+                            <span>拒绝召唤</span>
+                        </div>
+                        <div class="journey-stage meeting-mentor">
+                            <i class="fas fa-user-tie"></i>
+                            <span>遇见导师</span>
+                        </div>
+                        <div class="journey-stage crossing-threshold">
+                            <i class="fas fa-door-open"></i>
+                            <span>跨越门槛</span>
+                        </div>
+                        <div class="journey-stage tests-allies">
+                            <i class="fas fa-users"></i>
+                            <span>考验盟友</span>
+                        </div>
+                        <div class="journey-stage approach">
+                            <i class="fas fa-cave"></i>
+                            <span>深入洞穴</span>
+                        </div>
+                        <div class="journey-stage ordeal">
+                            <i class="fas fa-skull"></i>
+                            <span>严峻考验</span>
+                        </div>
+                        <div class="journey-stage reward">
+                            <i class="fas fa-gem"></i>
+                            <span>获得奖赏</span>
+                        </div>
+                        <div class="journey-stage road-back">
+                            <i class="fas fa-undo"></i>
+                            <span>回归之路</span>
+                        </div>
+                        <div class="journey-stage resurrection">
+                            <i class="fas fa-redo"></i>
+                            <span>浴火重生</span>
+                        </div>
+                        <div class="journey-stage return">
+                            <i class="fas fa-trophy"></i>
+                            <span>满载而归</span>
+                        </div>
+                    </div>
+                    <button id="applyHeroJourney" class="structure-action-btn">
+                        <i class="fas fa-check"></i> 应用英雄之旅
+                    </button>
+                </div>
+                
+                <!-- 时间线工具 -->
+                <div class="structure-card timeline-card">
+                    <h4><i class="fas fa-timeline"></i> 故事时间线</h4>
+                    <div class="timeline-controls">
+                        <button id="addTimelineEvent" class="timeline-btn">
+                            <i class="fas fa-plus"></i> 添加事件
+                        </button>
+                        <button id="clearTimeline" class="timeline-btn">
+                            <i class="fas fa-trash"></i> 清空时间线
+                        </button>
+                    </div>
+                    <div class="timeline-container" id="timelineContainer">
+                        <!-- 动态生成时间线 -->
+                        <div class="timeline-empty">
+                            <i class="fas fa-clock"></i>
+                            <p>点击"添加事件"开始构建时间线</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 对话生成工具 -->
+        <section class="full-width-section" id="dialogue">
+            <div class="section-header">
+                <h3><i class="fas fa-comment-dots"></i> 对话生成工具</h3>
+                <p>专业工具助您创作自然生动的对话</p>
+            </div>
+            
+            <div class="dialogue-tools">
+                <div class="dialogue-editor">
+                    <div class="editor-controls">
+                        <div class="character-selector">
+                            <label>说话角色：</label>
+                            <select id="speakingCharacter">
+                                <option value="protagonist">主角</option>
+                                <option value="antagonist">反派</option>
+                                <option value="supporting">配角</option>
+                                <option value="narrator">旁白</option>
+                            </select>
+                            <input type="text" id="customCharacter" placeholder="自定义角色名">
+                        </div>
+                        
+                        <div class="dialogue-style">
+                            <label>对话风格：</label>
+                            <select id="dialogueStyle">
+                                <option value="natural">自然口语</option>
+                                <option value="formal">正式书面</option>
+                                <option value="poetic">诗意文学</option>
+                                <option value="humorous">幽默风趣</option>
+                                <option value="dramatic">戏剧性</option>
+                            </select>
+                        </div>
+                        
+                        <div class="emotion-selector">
+                            <label>情感：</label>
+                            <div class="emotion-buttons">
+                                <button class="emotion-btn" data-emotion="happy">😊 开心</button>
+                                <button class="emotion-btn" data-emotion="angry">😠 愤怒</button>
+                                <button class="emotion-btn" data-emotion="sad">😢 悲伤</button>
+                                <button class="emotion-btn" data-emotion="surprised">😲 惊讶</button>
+                                <button class="emotion-btn" data-emotion="neutral">😐 中性</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="dialogue-input">
+                        <textarea 
+                            id="dialogueText" 
+                            placeholder="输入对话内容，或描述对话场景让我生成..." 
+                            rows="4"></textarea>
+                        <div class="dialogue-actions">
+                            <button id="generateDialogue" class="dialogue-action-btn">
+                                <i class="fas fa-magic"></i> 智能生成
+                            </button>
+                            <button id="analyzeDialogue" class="dialogue-action-btn">
+                                <i class="fas fa-search"></i> 分析对话
+                            </button>
+                            <button id="exportDialogue" class="dialogue-action-btn">
+                                <i class="fas fa-download"></i> 导出对话
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="dialogue-preview">
+                        <h5>对话预览：</h5>
+                        <div class="preview-container" id="dialoguePreview">
+                            <!-- 动态生成对话预览 -->
+                            <div class="preview-empty">
+                                <i class="fas fa-comments"></i>
+                                <p>生成的对话将在这里显示</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 灵感库 -->
+        <section class="gallery-section" id="inspiration">
+            <div class="section-header">
+                <h3><i class="fas fa-star"></i> 编剧灵感库</h3>
+                <p>经典故事结构和角色原型参考</p>
+            </div>
+            
+            <div class="inspiration-grid">
+                <div class="inspiration-card">
+                    <div class="inspiration-preview" style="background: linear-gradient(135deg, #6A11CB, #2575FC);">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="inspiration-info">
+                        <h5>经典三幕式</h5>
+                        <p>开端-对抗-结局的经典结构，适合大多数故事类型</p>
+                        <div class="inspiration-tags">
+                            <span class="tag">结构</span>
+                            <span class="tag">经典</span>
+                            <span class="tag">通用</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="inspiration-card">
+                    <div class="inspiration-preview" style="background: linear-gradient(135deg, #FF416C, #FF4B2B);">
+                        <i class="fas fa-user-ninja"></i>
+                    </div>
+                    <div class="inspiration-info">
+                        <h5>英雄之旅</h5>
+                        <p>约瑟夫·坎贝尔的神话原型，适合史诗和成长故事</p>
+                        <div class="inspiration-tags">
+                            <span class="tag">神话</span>
+                            <span class="tag">成长</span>
+                            <span class="tag">史诗</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="inspiration-card">
+                    <div class="inspiration-preview" style="background: linear-gradient(135deg, #11998E, #38EF7D);">
+                        <i class="fas fa-cat"></i>
+                    </div>
+                    <div class="inspiration-info">
+                        <h5>救猫咪节拍表</h5>
+                        <p>布莱克·斯奈德的电影编剧结构，适合商业剧本</p>
+                        <div class="inspiration-tags">
+                            <span class="tag">电影</span>
+                            <span class="tag">商业</span>
+                            <span class="tag">节奏</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="inspiration-card">
+                    <div class="inspiration-preview" style="background: linear-gradient(135deg, #654EA3, #EAAFC8);">
+                        <i class="fas fa-chess-board"></i>
+                    </div>
+                    <div class="inspiration-info">
+                        <h5>七点故事结构</h5>
+                        <p>丹·韦尔斯的高效故事规划方法，适合中短篇</p>
+                        <div class="inspiration-tags">
+                            <span class="tag">高效</span>
+                            <span class="tag">中短篇</span>
+                            <span class="tag">规划</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 快速动作栏 -->
+    <div class="quick-actions-bar">
+        <button id="newStoryProject" class="quick-action">
+            <i class="fas fa-plus"></i>
+            <span>新建故事项目</span>
+        </button>
+        <button id="brainstormIdeas" class="quick-action">
+            <i class="fas fa-lightbulb"></i>
+            <span>头脑风暴</span>
+        </button>
+        <button id="exportFullScript" class="quick-action">
+            <i class="fas fa-file-export"></i>
+            <span>导出完整剧本</span>
+        </button>
+    </div>
+
+    <!-- 脚本 -->
+    <script src="screenwriter.js"></script>
+    <script>
+        // 页面加载完成
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('📝 总编剧智能体页面已加载');
+            
+            // 初始化导航
+            const navToggle = document.getElementById('navToggle');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            if (navToggle && navMenu) {
+                navToggle.addEventListener('click', function() {
+                    navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+                });
+            }
+            
+            // 平滑滚动
+            document.querySelectorAll('.nav-menu a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                        
+                        // 更新活动链接
+                        document.querySelectorAll('.nav-menu a').forEach(link => {
+                            link.classList.remove('active');
+                        });
+                        this.classList.add('active');
+                    }
+                });
+            });
+            
+            // 工具折叠/展开
+            document.querySelectorAll('.tool-toggle').forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    const toolBody = this.closest('.tool-card').querySelector('.tool-body');
+                    const icon = this.querySelector('i');
+                    
+                    if (toolBody.style.display === 'none' || toolBody.style.display === '') {
+                        toolBody.style.display = 'block';
+                        icon.className = 'fas fa-chevron-down';
+                    } else {
+                        toolBody.style.display = 'none';
+                        icon.className = 'fas fa-chevron-up';
+                    }
+                });
+            });
+            
+            // 显示欢迎消息
+            setTimeout(() => {
+                const chatMessages = document.getElementById('chatMessages');
+                if (chatMessages) {
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }
+            }, 500);
+        });
+    </script>
+</body>
+</html>
