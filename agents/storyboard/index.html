@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分镜智能体 - AI导演工作室</title>
+    
+    <!-- 字体和图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- 样式表 -->
+    <link rel="stylesheet" href="../agents.css">
+    <link rel="stylesheet" href="storyboard.css">
+    
+    <!-- 图表库 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/rough-viz@1.0.1"></script>
+    
+    <style>
+        :root {
+            /* 分镜主题色 - 电影胶片风格 */
+            --storyboard-primary: #1A237E;
+            --storyboard-secondary: #283593;
+            --storyboard-accent: #3949AB;
+            --storyboard-highlight: #5C6BC0;
+            --storyboard-dark: #0D1B2A;
+            --storyboard-light: #E8EAF6;
+            --storyboard-gradient: linear-gradient(135deg, var(--storyboard-primary), var(--storyboard-secondary));
+            --storyboard-gradient-subtle: linear-gradient(135deg, rgba(26, 35, 126, 0.1), rgba(40, 53, 147, 0.1));
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <div class="brand-logo">
+                    <i class="fas fa-film"></i>
+                </div>
+                <div class="brand-text">
+                    <h1>分镜智能体</h1>
+                    <p>AI导演工作室 · 视觉叙事专家</p>
+                </div>
+            </div>
+            
+            <button class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="nav-menu">
+                <a href="../../index.html" class="nav-link">
+                    <i class="fas fa-home"></i> 工作室首页
+                </a>
+                <a href="../director/index.html" class="nav-link">
+                    <i class="fas fa-user-tie"></i> AI导演
+                </a>
+                <a href="../screenwriter/index.html" class="nav-link">
+                    <i class="fas fa-pen-nib"></i> 总编剧
+                </a>
+                <a href="../visual/index.html" class="nav-link">
+                    <i class="fas fa-palette"></i> 视觉风格
+                </a>
+                <a href="../dreamai/index.html" class="nav-link">
+                    <i class="fas fa-robot"></i> 即梦AI专家
+                </a>
+                <a href="#" class="nav-link active">
+                    <i class="fas fa-film"></i> 分镜智能体
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容区 -->
+    <main class="main-content">
+        <!-- 欢迎区域 -->
+        <section class="welcome-section storyboard-welcome">
+            <div class="welcome-container">
+                <div class="welcome-avatar storyboard-avatar">
+                    <i class="fas fa-film"></i>
+                </div>
+                <div class="welcome-text">
+                    <h2>🎬 欢迎使用分镜智能体</h2>
+                    <p>我是您的视觉叙事专家，负责将故事转化为生动的镜头语言和画面节奏。</p>
+                    <div class="welcome-meta">
+                        <span><i class="fas fa-user"></i> Nmyh NIUMA</span>
+                        <span><i class="fas fa-calendar"></i> 2026-03-17</span>
+                        <span><i class="fas fa-clock"></i> 视觉叙事工作流</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="welcome-preview">
+                <div class="preview-item">
+                    <i class="fas fa-video"></i>
+                    <span>镜头规划</span>
+                </div>
+                <div class="preview-item">
+                    <i class="fas fa-camera"></i>
+                    <span>画面构图</span>
+                </div>
+                <div class="preview-item">
+                    <i class="fas fa-music"></i>
+                    <span>节奏控制</span>
+                </div>
+                <div class="preview-item">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>创意分镜</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 三栏布局：聊天 + 工具 + 预览 -->
+        <div class="three-column-layout">
+            <!-- 左侧：智能对话 -->
+            <div class="column chat-column">
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <h4><i class="fas fa-comments"></i> 分镜智能对话</h4>
+                        <button class="tool-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="tool-body">
+                        <div class="chat-container">
+                            <div class="chat-messages" id="chatMessages">
+                                <div class="message agent">
+                                    <div class="message-avatar">🎬</div>
+                                    <div class="message-content">
+                                        <div class="message-header">
+                                            <span class="message-sender">分镜智能体</span>
+                                            <span class="message-time">刚刚</span>
+                                        </div>
+                                        <div class="message-text">
+                                            您好！我是分镜智能体，负责将您的故事转化为生动的视觉叙事。
+                                            我可以帮助您规划镜头、设计画面、控制节奏、创建分镜脚本。
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="chat-input">
+                                <textarea id="messageInput" placeholder="输入您的分镜需求或问题..." rows="3"></textarea>
+                                <div class="chat-actions">
+                                    <button id="sendMessage" class="action-btn">
+                                        <i class="fas fa-paper-plane"></i> 发送
+                                    </button>
+                                    <button id="clearChat" class="action-btn secondary">
+                                        <i class="fas fa-trash"></i> 清空
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="quick-prompts">
+                                <h5>快速提示：</h5>
+                                <div class="prompt-buttons">
+                                    <button class="prompt-btn" data-prompt="scene-plan">
+                                        <i class="fas fa-video"></i> 规划场景镜头
+                                    </button>
+                                    <button class="prompt-btn" data-prompt="composition-help">
+                                        <i class="fas fa-camera"></i> 设计画面构图
+                                    </button>
+                                    <button class="prompt-btn" data-prompt="rhythm-advice">
+                                        <i class="fas fa-music"></i> 控制视觉节奏
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 分镜动作 -->
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <h4><i class="fas fa-play-circle"></i> 分镜动作</h4>
+                    </div>
+                    <div class="tool-body">
+                        <div class="action-buttons">
+                            <button class="action-btn" data-action="create-storyboard">
+                                <i class="fas fa-plus-circle"></i> 创建分镜板
+                            </button>
+                            <button class="action-btn" data-action="analyze-rhythm">
+                                <i class="fas fa-chart-line"></i> 分析节奏
+                            </button>
+                            <button class="action-btn" data-action="export-storyboard">
+                                <i class="fas fa-download"></i> 导出分镜
+                            </button>
+                            <button class="action-btn" data-action="preview-animation">
+                                <i class="fas fa-play"></i> 预览动画
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 中间：分镜工具 -->
+            <div class="column tools-column">
+                <!-- 镜头规划器 -->
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <h4><i class="fas fa-video"></i> 镜头规划器</h4>
+                        <button class="tool-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="tool-body">
+                        <div class="shot-planning">
+                            <div class="shot-type">
+                                <label for="shotType">镜头类型：</label>
+                                <select id="shotType">
+                                    <option value="extreme-wide">极远景 (EWS)</option>
+                                    <option value="wide">远景 (WS)</option>
+                                    <option value="full">全景 (FS)</option>
+                                    <option value="medium">中景 (MS)</option>
+                                    <option value="close-up">特写 (CU)</option>
+                                    <option value="extreme-close-up">大特写 (ECU)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="camera-angle">
+                                <label for="cameraAngle">摄像机角度：</label>
+                                <select id="cameraAngle">
+                                    <option value="eye-level">平视</option>
+                                    <option value="high-angle">俯视</option>
+                                    <option value="low-angle">仰视</option>
+                                    <option value="dutch-angle">荷兰角</option>
+                                    <option value="bird-eye">鸟瞰</option>
+                                    <option value="worm-eye">虫眼</option>
+                                </select>
+                            </div>
+                            
+                            <div class="camera-movement">
+                                <label for="cameraMovement">摄像机运动：</label>
+                                <select id="cameraMovement">
+                                    <option value="static">固定</option>
+                                    <option value="pan">横摇</option>
+                                    <option value="tilt">纵摇</option>
+                                    <option value="zoom">变焦</option>
+                                    <option value="dolly">轨道</option>
+                                    <option value="crane">升降</option>
+                                    <option value="handheld">手持</option>
+                                    <option value="steadycam">斯坦尼康</option>
+                                </select>
+                            </div>
+                            
+                            <div class="shot-duration">
+                                <label for="shotDuration">镜头时长（秒）：</label>
+                                <input type="range" id="shotDuration" min="1" max="30" value="5">
+                                <div class="duration-value">
+                                    <span>1秒</span>
+                                    <span id="durationValue">5秒</span>
+                                    <span>30秒</span>
+                                </div>
+                            </div>
+                            
+                            <button id="addShot" class="tool-action-btn">
+                                <i class="fas fa-plus"></i> 添加镜头
+                            </button>
+                        </div>
+                        
+                        <div class="shot-list" id="shotList">
+                            <h5>镜头列表：</h5>
+                            <div class="empty-state">
+                                <i class="fas fa-video-slash"></i>
+                                <p>暂无镜头，点击"添加镜头"开始规划</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 画面构图设计 -->
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <h4><i class="fas fa-camera"></i> 画面构图设计</h4>
+                        <button class="tool-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="tool-body">
+                        <div class="composition-tools">
+                            <div class="composition-rule">
+                                <label for="compositionRule">构图法则：</label>
+                                <select id="compositionRule">
+                                    <option value="rule-of-thirds">三分法则</option>
+                                    <option value="golden-ratio">黄金分割</option>
+                                    <option value="symmetry">对称构图</option>
+                                    <option value="leading-lines">引导线</option>
+                                    <option value="frame-within-frame">框中框</option>
+                                    <option value="negative-space">负空间</option>
+                                    <option value="diagonal">对角线</option>
+                                    <option value="center">中心构图</option>
+                                </select>
+                            </div>
+                            
+                            <div class="focus-point">
+                                <label for="focusPoint">焦点位置：</label>
+                                <div class="focus-grid">
+                                    <div class="grid-cell" data-position="top-left">↖</div>
+                                    <div class="grid-cell" data-position="top-center">↑</div>
+                                    <div class="grid-cell" data-position="top-right">↗</div>
+                                    <div class="grid-cell" data-position="middle-left">←</div>
+                                    <div class="grid-cell active" data-position="center">●</div>
+                                    <div class="grid-cell" data-position="middle-right">→</div>
+                                    <div class="grid-cell" data-position="bottom-left">↙</div>
+                                    <div class="grid-cell" data-position="bottom-center">↓</div>
+                                    <div class="grid-cell" data-position="bottom-right">↘</div>
+                                </div>
+                            </div>
+                            
+                            <div class="depth-of-field">
+                                <label for="depthOfField">景深控制：</label>
+                                <select id="depthOfField">
+                                    <option value="shallow">浅景深</option>
+                                    <option value="medium">中等景深</option>
+                                    <option value="deep">深景深</option>
+                                </select>
+                            </div>
+                            
+                            <div class="lighting-style">
+                                <label for="lightingStyle">灯光风格：</label>
+                                <select id="lightingStyle">
+                                    <option value="high-key">高调光</option>
+                                    <option value="low-key">低调光</option>
+                                    <option value="chiaroscuro">明暗对比</option>
+                                    <option value="rim-light">轮廓光</option>
+                                    <option value="soft-light">柔光</option>
+                                    <option value="hard-light">硬光</option>
+                                </select>
+                            </div>
+                            
+                            <button id="previewComposition" class="tool-action-btn">
+                                <i class="fas fa-eye"></i> 预览构图
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧：节奏和预览 -->
+            <div class="column preview-column">
+                <!-- 视觉节奏分析 -->
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <h4><i class="fas fa-music"></i> 视觉节奏分析</h4>
+                        <button class="tool-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="tool-body">
+                        <div class="rhythm-analysis">
+                            <div class="rhythm-controls">
+                                <div class="rhythm-intensity">
+                                    <label for="rhythmIntensity">节奏强度：</label>
+                                    <input type="range" id="rhythmIntensity" min="1" max="10" value="5">
+                                    <div class="intensity-labels">
+                                        <span>舒缓</span>
+                                        <span id="intensityValue">中等</span>
+                                        <span>紧张</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="rhythm-pattern">
+                                    <label for="rhythmPattern">节奏模式：</label>
+                                    <select id="rhythmPattern">
+                                        <option value="slow-fast-slow">慢-快-慢</option>
+                                        <option value="fast-slow-fast">快-慢-快</option>
+                                        <option value="accelerating">加速</option>
+                                        <option value="decelerating">减速</option>
+                                        <option value="pulsating">脉动</option>
+                                        <option value="steady">平稳</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="rhythm-chart">
+                                <canvas id="rhythmChart"></canvas>
+                            </div>
+                            
+                            <button id="analyzeRhythm" class="tool-action-btn">
+                                <i class="fas fa-chart-bar"></i> 分析节奏
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 分镜预览 -->
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <h4><i class="fas fa-play-circle"></i> 分镜预览</h4>
+                        <button class="tool-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="tool-body">
+                        <div class="storyboard-preview">
+                            <div class="preview-controls">
+                                <button class="preview-btn" id="prevShot">
+                                    <i class="fas fa-backward"></i>
+                                </button>
+                                <button class="preview-btn play-btn" id="playPreview">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                                <button class="preview-btn" id="nextShot">
+                                    <i class="fas fa-forward"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="preview-canvas" id="previewCanvas">
+                                <div class="canvas-empty">
+                                    <i class="fas fa-film"></i>
+                                    <p>添加镜头后预览分镜</p>
+                                </div>
+                            </div>
+                            
+                            <div class="preview-info">
+                                <div class="info-item">
+                                    <span class="info-label">当前镜头：</span>
+                                    <span class="info-value" id="currentShot">0/0</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">总时长：</span>
+                                    <span class="info-value" id="totalDuration">0秒</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">节奏评分：</span>
+                                    <span class="info-value" id="rhythmScore">--</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 全宽区域：分镜板和高级工具 -->
+        <section class="full-width-section">
+            <div class="section-header">
+                <h3><i class="fas fa-th-large"></i> 分镜板编辑器</h3>
+                <div class="section-actions">
+                    <button class="section-btn" id="addStoryboard">
+                        <i class="fas fa-plus"></i> 新建分镜板
+                    </button>
+                    <button class="section-btn" id="clearStoryboard">
+                        <i class="fas fa-trash"></i> 清空
+                    </button>
+                    <button class="section-btn" id="exportPDF">
+                        <i class="fas fa-file-pdf"></i> 导出PDF
+                    </button>
+                </div>
+            </div>
+            
+            <div class="storyboard-grid" id="storyboardGrid">
+                <div class="grid-empty">
+                    <i class="fas fa-clapperboard"></i>
+                    <h4>开始创建您的分镜板</h4>
+                    <p>使用镜头规划器添加镜头，或点击"新建分镜板"开始</p>
+                    <button class="empty-action-btn" id="startStoryboard">
+                        <i class="fas fa-play"></i> 开始创作
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 高级分镜工具 -->
+        <section class="full-width-section">
+            <div class="section-header">
+                <h3><i class="fas fa-tools"></i> 高级分镜工具</h3>
+            </div>
+            
+            <div class="advanced-tools">
+                <div class="advanced-tool">
+                    <div class="tool-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h4>智能分镜生成</h4>
+                        <p>基于故事描述自动生成专业分镜序列</p>
+                        <button class="tool-btn" id="aiGenerate">
+                            <i class="fas fa-magic"></i> AI生成
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="advanced-tool">
+                    <div class="tool-icon">
+                        <i class="fas fa-chart-network"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h4>视觉叙事分析</h4>
+                        <p>分析分镜的视觉连贯性和叙事效果</p>
+                        <button class="tool-btn" id="analyzeNarrative">
+                            <i class="fas fa-chart-bar"></i> 分析叙事
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="advanced-tool">
+                    <div class="tool-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h4>镜头语言转换</h4>
+                        <p>在不同镜头语言风格之间转换</p>
+                        <button class="tool-btn" id="convertStyle">
+                            <i class="fas fa-sync-alt"></i> 转换风格
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="advanced-tool">
+                    <div class="tool-icon">
+                        <i class="fas fa-vr-cardboard"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h4>3D预览模式</h4>
+                        <p>在3D空间中预览镜头运动和构图</p>
+                        <button class="tool-btn" id="preview3D">
+                            <i class="fas fa-cube"></i> 3D预览
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 分镜库和灵感 -->
+        <section class="full-width-section">
+            <div class="section-header">
+                <h3><i class="fas fa-book-open"></i> 分镜库 & 灵感</h3>
+            </div>
+            
+            <div class="inspiration-grid">
+                <div class="inspiration-card">
+                    <div class="inspiration-preview" style="background: linear-gradient(135deg, #1A237E, #3949AB);">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <div class="inspiration-info">
+                        <h5>电影分镜模板</h5>
+                        <p>经典电影的分镜结构和镜头语言分析</p>
+                        <div class="inspiration-tags">
+                            <span class="tag">好莱坞</span>
+                            <span class="tag">三幕式</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="inspiration-card">
+                    <div class="inspiration-preview" style="background: linear-gradient(135deg, #283593, #5C6BC0);">
+                        <i class="fas fa-tv"></i>
+                    </div>
+                    <div class="inspiration-info">
+                        <h5>电视剧分镜</h5>
+                        <p>电视剧集的节奏控制和镜头规划技巧</p>
+                        <div class="inspiration-tags">
+                            <span class="tag">剧集</span>
+                            <span class="tag">节奏</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="inspiration-card">
+                    <div class="inspiration-preview" style="background: linear-gradient(135deg, #3949AB, #7986CB);">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <div class="inspiration-info">
+                        <h5>游戏过场动画</h5>
+                        <p>游戏过场动画的镜头运动和视觉叙事</p>
+                        <div class="inspiration-tags">
+                            <span class="tag">游戏</span>
+                            <span class="tag">互动</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="inspiration-card">
+                    <div class="inspiration-preview" style="background: linear-gradient(135deg, #5C6BC0, #9FA8DA);">
+                        <i class="fas fa-ad"></i>
+                    </div>
+                    <div class="inspiration-info">
+                        <h5>广告分镜技巧</h5>
+                        <p>广告片的快速叙事和视觉冲击力设计</p>
+                        <div class="inspiration-tags">
+                            <span class="tag">广告</span>
+                            <span class="tag">冲击力</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 快速动作栏 -->
+    <div class="quick-actions-bar">
+        <button class="quick-action" data-action="quick-storyboard">
+            <i class="fas fa-bolt"></i> 快速分镜
+        </button>
+        <button class="quick-action" data-action="rhythm-check">
+            <i class="fas fa-heartbeat"></i> 节奏检查
+        </button>
+        <button class="quick-action" data-action="export-all">
+            <i class="fas fa-file-export"></i> 批量导出
+        </button>
+    </div>
+
+    <!-- 脚本 -->
+    <script src="storyboard.js"></script>
+    <script>
+        // 基础初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🎬 分镜智能体页面加载完成');
+            
+            // 初始化基础交互
+            initBaseInteractions();
+            
+            // 显示欢迎消息
+            setTimeout(() => {
+                const chatMessages = document.getElementById('chatMessages');
+                if (chatMessages) {
+                    const welcomeMsg = document.createElement('div');
+                    welcomeMsg.className = 'message agent';
+                    welcomeMsg.innerHTML = `
+                        <div class="message-avatar">🎬</div>
+                        <div class="message-content">
+                            <div class="message-header">
+                                <span class="message-sender">分镜智能体</span>
+                                <span class="message-time">刚刚</span>
+                            </div>
+                            <div class="message-text">
+                                🎬 <strong>分镜智能体已就绪！</strong><br><br>
+                                我是您的视觉叙事专家，负责：<br>
+                                • 📹 镜头规划与设计<br>
+                                • 🎨 画面构图与灯光<br>
+                                • 🎵 视觉节奏控制<br>
+                                • 📋 分镜脚本创建<br><br>
+                                让我们开始将故事转化为生动的视觉叙事吧！
+                            </div>
+                        </div>
+                    `;
+                    chatMessages.appendChild(welcomeMsg);
+                }
+            }, 1000);
+        });
+        
+        function initBaseInteractions() {
+            // 导航切换
+            const navToggle = document.getElementById('navToggle');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            if (navToggle && navMenu) {
+                navToggle.addEventListener('click', function() {
+                    navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+                });
+            }
+            
+            // 工具折叠
+            document.querySelectorAll('.tool-toggle').forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    const toolBody = this.closest('.tool-card').querySelector('.tool-body');
+                    const icon = this.querySelector('i');
+                    
+                    if (toolBody.style.display === 'none' || toolBody.style.display === '') {
+                        toolBody.style.display = 'block';
+                        icon.className = 'fas fa-chevron-down';
+                    } else {
+                        toolBody.style.display = 'none';
+                        icon.className = 'fas fa-chevron-up';
+                    }
+                });
+            });
+            
+            // 焦点网格交互
+            document.querySelectorAll('.grid-cell').forEach(cell => {
+                cell.addEventListener('click', function() {
+                    document.querySelectorAll('.grid-cell').forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // 滑块值显示
+            const durationSlider = document.getElementById('shotDuration');
+            const durationValue = document.getElementById('durationValue');
+            const intensitySlider = document.getElementById('rhythmIntensity');
+            const intensityValue = document.getElementById('intensityValue');
+            
+            if (durationSlider && durationValue) {
+                durationSlider.addEventListener('input', function() {
+                    durationValue.textContent = this.value + '秒';
+                });
+            }
+            
+            if (intensitySlider && intensityValue) {
+                intensitySlider.addEventListener('input', function() {
+                    const value = parseInt(this.value);
+                    if (value <= 3) intensityValue.textContent = '舒缓';
+                    else if (value <= 7) intensityValue.textContent = '中等';
+                    else intensityValue.textContent = '紧张';
+                });
+            }
+        }
+    </script>
+</body>
+</html>
