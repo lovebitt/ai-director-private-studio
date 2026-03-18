@@ -46,6 +46,8 @@
 ### 集成功能
 - **OpenClaw API**: AI导演系统后端集成
 - **GitHub Pages**: 静态网站托管
+- **实时AI对话**: DeepSeek API集成，支持与5个智能体实时对话
+- **API控制面板**: 完整的API密钥管理和聊天界面
 - **GitHub Actions**: 自动化部署
 
 ## 📁 项目结构
@@ -87,6 +89,32 @@ ai-director-studio/
    - `index.html`: 页面结构和内容
    - `styles.css`: 样式和布局
    - `script.js`: 交互和功能
+
+## 🤖 API集成使用
+
+### API服务器启动
+```bash
+# 进入项目目录
+cd /path/to/ai-director-studio
+
+# 安装依赖（如果需要）
+npm install
+
+# 启动API服务器
+npm start
+# 或直接运行
+node api/server.js
+```
+
+### API功能说明
+1. **API控制面板**: 导航栏点击"API控制"
+2. **密钥设置**: 输入DeepSeek API密钥并保存
+3. **智能体选择**: 点击选择要对话的智能体
+4. **实时对话**: 输入消息并发送，获取AI回复
+5. **连接测试**: 使用测试按钮验证API服务器状态
+
+### API接口文档
+详细API接口说明请查看 [API_INTEGRATION.md](API_INTEGRATION.md)
 
 ## 🌍 部署到GitHub Pages
 
